@@ -12,7 +12,7 @@ m88u-pqki.json - Chris - DONE - no untis, status
 mags-97de.json - Kevin - DONE - no units
 msk6-43c6.json - Kevin - DONE - no units, status
 stav-rdug.json - Scott - DONE - no type, units, status
-vcj3-ncb3.json - Scott - DONE - no status 
+vcj3-ncb3.json - Scott - DONE - no status
 ydr8-5enu.json - Scott - DONE - no units, status
 rcm3-fn58.json - Kevin - DONE - no units, status
 ```
@@ -34,7 +34,7 @@ f7tt-z5vu.json
 fesm-tgxf.json
 cii2-ipkp.json
 qr2t-2k7s.json
-f4rp-2kvy.json - Scott
+f4rp-2kvy.json - Scott - DONE - no lat/lon, units, amount
 rfav-vmja.json - Scott
 ```
 
