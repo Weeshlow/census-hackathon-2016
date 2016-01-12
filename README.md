@@ -30,8 +30,12 @@ A quick easy read of the building permit data.
 ### West
 
 washington state
-- colfax 2015+
 - seattle
+- colfax 2015+ (32 permits)
+
+> colfax: population 2,805 as of the [2010 census](https://en.wikipedia.org/wiki/Colfax,_Washington)
+
+> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/ThreshingbeeColfaxWA.jpg/700px-ThreshingbeeColfaxWA.jpg" height="200">
 
 california
 - san francisco 2012+ (snapshots)
