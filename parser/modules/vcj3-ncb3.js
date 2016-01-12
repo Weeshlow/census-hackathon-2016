@@ -248,43 +248,43 @@
 /*
     SAMPLE ROW
     {
-        0: 1, 
-        1: "FDE86284-3AB0-49D4-851D-1AED5B1416C0", 
-        2: 1, 
-        3: 1402432974, 
-        4: "701271", 
-        5: 1402434307, 
-        6: "701271", 
-        7: "{\n}", 
-        8: "908", 
-        9: null, 
-        10: "NE", 
-        11: "100TH", 
-        12: "CT", 
-        13: "5", 
-        14: "26", 
-        15: "2010", 
-        16: "Residential", 
-        17: "Additions, Alterations, Repairs", 
-        18: "NA", 
-        19: "0", 
-        20: "3630", 
-        21: "2770140", 
-        22: "1131658", 
-        23: "201110970", 
-        24: "97", 
-        25: "Existing One Or Two Family Residence", 
-        26: null, 
-        27: "SINGLE FAMILY", 
-        28: "Clay", 
-        29: "2", 
-        30: "North Kansas City", 
-        31: "103892", 
-        32: "CL0991500030750001", 
-        33: "APEX HEATING AND AIR CONDITIONING INC.", 
-        34: "BRENDA ZITTEL", 
-        35: null, 
-        36: "908 NE 100TH CT               WILLOW PARK 2ND PLAT LOT 50", 
+        0: 1,
+        1: "FDE86284-3AB0-49D4-851D-1AED5B1416C0",
+        2: 1,
+        3: 1402432974,
+        4: "701271",
+        5: 1402434307,
+        6: "701271",
+        7: "{\n}",
+        8: "908",
+        9: null,
+        10: "NE",
+        11: "100TH",
+        12: "CT",
+        13: "5",
+        14: "26",
+        15: "2010",
+        16: "Residential",
+        17: "Additions, Alterations, Repairs",
+        18: "NA",
+        19: "0",
+        20: "3630",
+        21: "2770140",
+        22: "1131658",
+        23: "201110970",
+        24: "97",
+        25: "Existing One Or Two Family Residence",
+        26: null,
+        27: "SINGLE FAMILY",
+        28: "Clay",
+        29: "2",
+        30: "North Kansas City",
+        31: "103892",
+        32: "CL0991500030750001",
+        33: "APEX HEATING AND AIR CONDITIONING INC.",
+        34: "BRENDA ZITTEL",
+        35: null,
+        36: "908 NE 100TH CT               WILLOW PARK 2ND PLAT LOT 50",
         37: [ "{\"address\":\"908 NE 100TH CT\",\"city\":\"\",\"state\":\"\",\"zip\":\"\"}", "39.52368635500045", "-99.11415045099966", null, false ] ]
     }
 */
@@ -301,7 +301,6 @@
     var LOC_LAT_COL = 1;
     var LOC_LON_COL = 2;
 
-    var CLASS_COL = 16;
     var TYPE_COL = 17;
 
     var UNITS_COL = 19;
@@ -313,7 +312,7 @@
             id: function() {
                 return id;
             },
-            type: function() {
+            type: function(arr) {
                 return arr[TYPE_COL];
             },
             status: function() {
