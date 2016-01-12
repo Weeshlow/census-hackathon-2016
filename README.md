@@ -1,7 +1,7 @@
 # census-hackathon-2016
 
-## Census Department Perceived Benefits
-The permit microdata would benefit operations in the Decennial, Demographic, and Economic Directorates within the Census Bureau, and support information needs in other Departments. 
+## Census Bureau's Perceived Benefits
+The permit microdata would benefit operations in the Decennial, Demographic, and Economic Directorates within the [Census Bureau](http://www.census.gov/about/what.html), and support information needs in other Departments. 
 
 ### Economic Directorate
 The information would have significant impact in the Economic Directorate to decrease costs, improve quality, and provide new data products, including:
@@ -56,7 +56,7 @@ maryland
 - baltimore
   - bldg
   - bldg work exceeding 50K
-  - minor privilege permits (outdoor public right-of-way)
+  - minor privilege permits (minor public space encroachment)
 
 massachusetts
 - somerville (boston suburb)
@@ -74,17 +74,28 @@ new york
 ### South
 
 lousiana
-- new orleans
+- new orleans 
+  - 1995-2005 (pre katrina)
+  - 2012+
+  
+> permit counts since 2012 (left), relative to flooding (right)
 
+> <img src="https://dl.dropboxusercontent.com/u/705531/permits.png" width="400"> <img src="https://dl.dropboxusercontent.com/u/705531/katrina.png" width="400">
 
 ### Well Building Permits
 colorado
 
+> 14 year "Colorado River Drought Forces a Painful Reckoning for States"
+
+> <img src="https://dl.dropboxusercontent.com/u/705531/water.png" width="400">
 
 
 ### Canadian Building Permits
 alberta
 - edmonton
 
+> five year price of oil
+
+> <img src="https://dl.dropboxusercontent.com/u/705531/oil.png" width="400">
 
 
