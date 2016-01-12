@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const OUTPUT_DIR = 'output';
+const MAX_TEST_LINES = 10;
 
 let dataRe = /\"data\"\s?:\s?\[/;
 
@@ -12,6 +13,7 @@ const modules = {};
 const buffs = {}; // buffers for each file
 const startedData = {}; // whether or not we've reached the actual data in each file
 const outputStreams = {}; // output streams for each file
+const counts = {};
 
 // search the buffer for the start of the data
 function processBuffer(file) {
@@ -40,22 +42,26 @@ function processBuffer(file) {
 
 // pump a record through the correct parser. output to csv file.
 function processRecord(file, line) {
-  if (line[0] === ',') {
-    line = line.slice(1).trim();
-  }
-  const record = JSON.parse(line);
-
-  // iterate over keys in module and run functions against record
-  try {
-    let values = [];
-    for (let key of Object.keys(modules[file])) {
-      values.push(JSON.stringify(modules[file][key](record)));
+  if (process.env["TEST"] && counts[file] > MAX_TEST_LINES) {
+    return;
+  } else {
+    counts[file] = counts[file] + 1;
+    if (line[0] === ',') {
+      line = line.slice(1).trim();
     }
-    outputStreams[file].write(values.join(',') + '\n');
-  } catch (lineerr) {
-    console.error(file);
-    console.error(lineerr);
-    // skip record
+    const record = JSON.parse(line);
+
+    // iterate over keys in module and run functions against record
+    try {
+      let values = [];
+      for (let key of Object.keys(modules[file])) {
+        values.push(JSON.stringify(modules[file][key](record)));
+      }
+      outputStreams[file].write(values.join(',') + '\n');
+    } catch (lineerr) {
+      console.error(`error while processing line from ${file}\n${line}\n${lineerr}`);
+      // skip record
+    }
   }
 }
 
@@ -76,6 +82,9 @@ fs.readdir(process.argv[2], function(err, files) {
       // open output stream
       const outputName = path.join(OUTPUT_DIR, f.substring(0, f.length-5) + '.csv');
       outputStreams[f] = fs.createWriteStream(outputName);
+
+      // start a line count
+      counts[f] = 0;
 
       // write out column names to CSV
       let columnNames = Object.keys(modules[f]).map(c => `"${c}"`).join(',');
