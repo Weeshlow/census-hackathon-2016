@@ -301,7 +301,6 @@
     var LOC_LAT_COL = 1;
     var LOC_LON_COL = 2;
 
-    var CLASS_COL = 16;
     var TYPE_COL = 17;
 
     var UNITS_COL = 19;
