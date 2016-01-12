@@ -6,4 +6,5 @@ Time
 Type
 Status
 Units
+Description
 Amount
