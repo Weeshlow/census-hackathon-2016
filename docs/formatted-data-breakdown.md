@@ -1,6 +1,7 @@
 # formatted-data summary
 
 ## similar data, with lat lons
+```
 24uj-dj8v.json
 2hre-tvqe.json
 47eb-r92t.json
@@ -14,12 +15,16 @@ stav-rdug.json <- different key names
 vcj3-ncb3.json <- different key names
 ydr8-5enu.json
 rcm3-fn58.json <- different key names
+```
 
 ## similar data, with lat lons
+```
 q3yh-mp87.json
 xfyi-uyt5.json
+```
 
 ## similar data, null or no lat lons, text addresses
+```
 4hr8-fgbf.json
 akhc-zaz6.json
 cvnj-fvgf.json
@@ -32,13 +37,18 @@ cii2-ipkp.json
 qr2t-2k7s.json
 f4rp-2kvy.json
 rfav-vmja.json
+```
 
-## shit data. map blocks?
+## bad data. map blocks?
+```
 rzd3-6sat.json
 4wyh-gtfb.json
+```
 
 ## no location data at all
+```
 aw7g-a8b9.json <- premises name
 knv6-r5ad.json <- premises name
 25sf-z8zd.json <- ward/neighbourhood
 e5mc-wrrq.json <- zip/neighbourhood
+```
