@@ -62,6 +62,10 @@ maryland
   - bldg work exceeding 50K
   - minor privilege permits (minor public space encroachment)
 
+> Despite its proximity to the nation’s capital in Washington, D.C., Baltimore, Maryland has been the center of economic despair and urban blight since riots rolled through the city a day after Dr. Martin Luther King Jr. was assassinated in 1968.
+
+> So great are the problems in modern-day Baltimore, that the city’s Black Police Commissioner Anthony Batts said in March that issues essentially “go back in time.” “When I go to Baltimore, on the East Coast, I’m dealing with 1950s-level black-and-white racism,” Police Commissioner Anthony Batts said, according to the Sun. “It’s taken a step back. Everything’s either black or everything’s white, and we’re dealing with that as a community.”
+
 massachusetts
 - somerville (boston suburb)
 - boston
@@ -69,6 +73,10 @@ massachusetts
   - public works, transportation, fire
   - asbestos removal
   - alcohol licenses
+
+> Urban sprawl: If all of Boston's urbanization were a single urban area, it would be the third most expansive in the world [behind New York and Tokyo]. 
+
+> The core city of Boston is among the most dense in the United States, with a 2014 density of 13,300 per square mile (5,200 per square kilometer). It is also very successful, having experienced a strong population turnaround, after falling from 801,000 residents in 1950 to 562,000 in 1980 (a 30% loss). By 2014, the city had recovered nearly 40% of its former population, rising to 656,000.
 
 new york
 - nyc
