@@ -86,24 +86,30 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const LAT_COL = 13;
-    const LON_COL = 13;
-    const DESC_COL = 12;
+  const LAT_COL = 13;
+  const LON_COL = 13;
+  const DESC_COL = 12;
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
-            type: () => null,
-            status: () => null,
-            latitude: (arr) => arr[LAT_COL][4],
-            longitude: (arr) => arr[LON_COL][5],
-            units: () => null,
-            timestamp: () => null,
-            description: (arr) => arr[DESC_COL].trim(),
-            amount: () => null,
-        };
+  module.exports = function(id) {
+    return {
+      id: () => id,
+      type: () => null,
+      status: () => null,
+      latitude: (arr) => {
+        return arr[LAT_COL] !== null ? arr[LAT_COL][4] : null;
+      },
+      longitude: (arr) => {
+        return arr[LON_COL] !== null ? arr[LON_COL][5] : null;
+      },
+      units: () => null,
+      timestamp: () => null,
+      description: (arr) => {
+        return arr[DESC_COL] !== null ? arr[DESC_COL].trim() : null;
+      },
+      amount: () => null,
     };
+  };
 
 }());

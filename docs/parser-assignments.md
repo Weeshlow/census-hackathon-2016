@@ -8,18 +8,18 @@
 bwg6-98m2.json - Kevin - DONE - no type, units, status, timestamp, amount
 f74k-9nzv.json - Kevin - DONE - no type, units, status
 k6m8-62kn.json - Chris
-m88u-pqki.json - Chris
-mags-97de.json - Chris
-msk6-43c6.json - Kevin
+m88u-pqki.json - Chris - DONE - no units, status
+mags-97de.json - Kevin - DONE - no units
+msk6-43c6.json - Kevin - DONE - no units, status
 stav-rdug.json - Scott - DONE - no type, units, status
-vcj3-ncb3.json - Scott
-ydr8-5enu.json - Scott
-rcm3-fn58.json - Kevin
+vcj3-ncb3.json - Scott - DONE - no status
+ydr8-5enu.json - Scott - DONE - no units, status
+rcm3-fn58.json - Kevin - DONE - no units, status
 ```
 
 ## similar data, with lat lons
 ```
-q3yh-mp87.json - Morgan
+q3yh-mp87.json - Morgan - DONE - no units
 xfyi-uyt5.json - Emmett
 ```
 ## similar data, null or no lat lons, text addresses
@@ -34,8 +34,8 @@ f7tt-z5vu.json
 fesm-tgxf.json
 cii2-ipkp.json
 qr2t-2k7s.json
-f4rp-2kvy.json
-rfav-vmja.json
+f4rp-2kvy.json - Scott - DONE - no lat/units,
+rfav-vmja.json - Scott - DONE - no status, lat/lon, units
 ```
 
 ## bad data. map blocks?

@@ -42,26 +42,22 @@ function processBuffer(file) {
 
 // pump a record through the correct parser. output to csv file.
 function processRecord(file, line) {
-  if (process.env["TEST"] && counts[file] > MAX_TEST_LINES) {
-    return;
-  } else {
-    counts[file] = counts[file] + 1;
-    if (line[0] === ',') {
-      line = line.slice(1).trim();
-    }
-    const record = JSON.parse(line);
+  counts[file] = counts[file] + 1;
+  if (line[0] === ',') {
+    line = line.slice(1).trim();
+  }
+  const record = JSON.parse(line);
 
-    // iterate over keys in module and run functions against record
-    try {
-      let values = [];
-      for (let key of Object.keys(modules[file])) {
-        values.push(JSON.stringify(modules[file][key](record)));
-      }
-      outputStreams[file].write(values.join(',') + '\n');
-    } catch (lineerr) {
-      console.error(`error while processing line from ${file}\n${line}\n${lineerr}`);
-      // skip record
+  // iterate over keys in module and run functions against record
+  try {
+    let values = [];
+    for (let key of Object.keys(modules[file])) {
+      values.push(JSON.stringify(modules[file][key](record)));
     }
+    outputStreams[file].write(values.join(',') + '\n');
+  } catch (lineerr) {
+    console.error(`error while processing line from ${file}\n${line}\n${lineerr}`);
+    // skip record
   }
 }
 
@@ -96,8 +92,12 @@ fs.readdir(process.argv[2], function(err, files) {
       // use processBuffer to look for individual records to pump through module[f]
       let stream = fs.createReadStream(path.join(process.argv[2], f), {flags: 'r'});
       stream.on('data', d => {
-        buffs[f] += d.toString();
-        processBuffer(f);
+        if (process.env['TEST'] && counts[f] > MAX_TEST_LINES) {
+          stream.close();
+        } else {
+          buffs[f] += d.toString();
+          processBuffer(f);
+        }
       });
       stream.on('end', () => {
         console.log(`Finished reading file ${f}`);

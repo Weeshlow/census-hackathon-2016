@@ -67,20 +67,20 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
-            type: (/* arr */) => null,
-            status: (/* arr */) => null,
-            latitude: (/* arr */) => null,
-            longitude: (/* arr */) => null,
-            units: (/* arr */) => null,
-            timestamp: (/* arr */) => null, // ISO Date format!
-            description: (/* arr */) => null,
-            amount: (/* arr */) => null // Use Cents!
-        };
+  module.exports = function(id) {
+    return {
+      id: () => id,
+      type: ( /* arr */ ) => null,
+      status: ( /* arr */ ) => null,
+      latitude: ( /* arr */ ) => null,
+      longitude: ( /* arr */ ) => null,
+      units: ( /* arr */ ) => null,
+      timestamp: ( /* arr */ ) => null, // ISO Date format!
+      description: ( /* arr */ ) => null,
+      amount: ( /* arr */ ) => null // Use Cents!
     };
+  };
 
 }());

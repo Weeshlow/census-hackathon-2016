@@ -5,9 +5,9 @@ The permit microdata would benefit operations in the Decennial, Demographic, and
 
 ### Economic Directorate
 The information would have significant impact in the Economic Directorate to decrease costs, improve quality, and provide new data products, including:
--	Eliminating the need for BPS **data collection**
--	Eliminating the need for SOC listing operations
--	Improving the **accuracy** of the SOC and SOMA samples
+-	Eliminating the need for [BPS](http://www.census.gov/construction/bps/) **data collection**
+-	Eliminating the need for [SOC](http://www.bls.gov/soc/) listing operations
+-	Improving the **accuracy** of the SOC and [SOMA](http://www.census.gov/housing/soma/) samples
 -	Improving the accuracy of the sub-county **housing unit** and **population** estimates
 -	Providing data on **demolitions** to improve studies of changes in the housing stock
 -	Providing the ability to release zip code level data and maps on residential and nonresidential **construction** for selected areas
