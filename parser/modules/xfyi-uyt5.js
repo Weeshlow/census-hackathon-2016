@@ -39,89 +39,6 @@
       "tableColumnId" : 11256903,
       "width" : 187,
 
-<<<<<<< HEAD
-/*
-    SAMPLE ROW: 
-    {
-      0: 1370997875,
-      1: 461725,
-      2: "DOB Job Permit", 
-      3: "VAS & SONS CORP",
-      4: null,
-      5: "32010861902",
-      6:  "EQUIPMENT WORK",
-      7: null,
-      8: "2010-05-06",
-      9: "2011-04-25",
-      10: "2010-05-06",
-      11: "PERMIT ISSUED",
-      12: "1954",
-      13: "OCEAN AVENUE",
-      14: "BROOKLYN",
-      15: "11230",
-      16: "BROOKLYN",
-      17: "3181615",
-      18: "3067570042",
-      19: "40.614241", 
-      20: "-73.954631"
-      21: null,
-      22: "0600253"
-      23: "GC"
-    }
-*/
-
-
-
-
-
-(function() {
-    'use strict';
-
-    var LAT_COL = 25;
-    var LON_COL = 26;   
-    var DESC_COL = 10; 
-    var STAT_COL = 17; 
-    var EXP_DATE = 15; 
-    var ISS_DATE = 14; 
-    var STAT_DATE = 16; 
-    var TYPE_DESC = 12; 
-    var SUBTYPE_DESC = 13; 
-
-
-    module.exports = function(id) {
-        return {
-            id: function() {
-                return id;
-            }, 
-            type: function (arr) {
-                return arr[TYPE_DESC] + ';' + arr[SUBTYPE_DESC];
-            },
-            status: function (arr) {
-                return arr[STAT_COL];
-            },
-            latitude: function (arr) {
-                return arr[LAT_COL]; 
-            },
-            longitude: function (arr) {
-                return arr[LON_COL]; 
-            },
-            units: function() {
-                return null; 
-            },
-            timestamp: function (arr) {
-                return arr[ISS_DATE]; 
-            },
-            description: function (arr) {
-                return arr[DESC_COL]; 
-            },
-            amount: function () {
-                return null;
-            }
-        };
-    };
-}()); 
-
-=======
     }, {
       "id" : 75767560,
       "name" : "Permit_Type_Description",
@@ -131,7 +48,6 @@
       "renderTypeName" : "text",
       "tableColumnId" : 11256904,
       "width" : 249,
->>>>>>> e97a277c2482db542a30b2aa4b62b387bef2b957
 
     }, {
       "id" : 75767561,
@@ -314,40 +230,40 @@
       6: "435151",
       7: "{\n}",
       8: "DOB Job Permit",
-      11: "SAME",
-      12: null,
-      13: "30043914901",
-      14: "EQUIPMENT WORK",
-      15: null,
+      9: "SAME",
+      10: null,
+      11: "30043914901",
+      12: "EQUIPMENT WORK",
+      13: null,
+      14: "1999-06-03",
+      15: "2000-06-02",
       16: "1999-06-03",
-      17: "2000-06-02",
-      18: "1999-06-03",
-      19: "PERMIT ISSUED",
-      20: "753",
-      21: "EAST 52 STREET",
+      17: "PERMIT ISSUED",
+      18: "753",
+      19: "EAST 52 STREET",
+      20: "BROOKLYN",
+      21: "11203",
       22: "BROOKLYN",
-      23: "11203",
-      24: "BROOKLYN",
-      25: "3222087",
-      26: "3079280038",
-      27: "40.641806",
-      28: -73.92708",
-      29: null,
-      30: null,
-      31: "OW"
+      23: "3222087",
+      24: "3079280038",
+      25: "40.641806",
+      26: -73.92708",
+      27: null,
+      28: null,
+      29: "OW"
     }
 */
 
 (function() {
   'use strict';
 
-  const LAT_COL = 27;
-  const LON_COL = 28;
-  const DESC_COL = 12;
-  const STAT_COL = 19;
-  const DATE_COL = 16;
-  const TYPE_DESC = 14;
-  const SUBTYPE_DESC = 15;
+  const LAT_COL = 25;
+  const LON_COL = 26;
+  const DESC_COL = 10;
+  const STAT_COL = 17;
+  const DATE_COL = 14;
+  const TYPE_DESC = 12;
+  const SUBTYPE_DESC = 13;
 
   module.exports = function(id) {
     return {

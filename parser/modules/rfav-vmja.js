@@ -119,28 +119,28 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const CENTS_MULTIPLIER = 100;
-    const AMOUNT_COL = 14;
-    const DATE_COL = 10;
-    const TYPE_COL = 9;
-    const DESC_COL = 12;
+  const CENTS_MULTIPLIER = 100;
+  const AMOUNT_COL = 14;
+  const DATE_COL = 10;
+  const TYPE_COL = 9;
+  const DESC_COL = 12;
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
-            type: (arr) => arr[TYPE_COL],
-            status: () => null,
-            latitude: () => null,
-            longitude: () => null,
-            units: () => null,
-            timestamp: (arr) => arr[DATE_COL],  // ISO datetime string
-            description: (arr) => arr[DESC_COL],
-            amount: (arr) => {
-              return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
-            }
-        };
+  module.exports = function(id) {
+    return {
+      id: () => id,
+      type: (arr) => arr[TYPE_COL],
+      status: () => null,
+      latitude: () => null,
+      longitude: () => null,
+      units: () => null,
+      timestamp: (arr) => arr[DATE_COL], // ISO datetime string
+      description: (arr) => arr[DESC_COL],
+      amount: (arr) => {
+        return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+      }
     };
+  };
 
 }());
