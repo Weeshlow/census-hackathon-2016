@@ -332,7 +332,7 @@
                 return arr[YEAR_COL] + '-' + arr[MONTH_COL] + '-' + arr[DAY_COL] + 'T00:00:00';  // ISO datetime string
             },
             description: function(arr) {
-                return arr[TYPE_COL] + ' - ' + arr[DESC_COL];
+                return arr[TYPE_COL] + ': ' + arr[DESC_COL];
             },
             amount: function(arr) {
                 return arr[AMOUNT_COL] * CENTS_MULTIPLIER;
