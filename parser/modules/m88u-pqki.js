@@ -157,33 +157,33 @@ Sample record:
 
 // id, type, status, location, units, timestamp, description, amount
 
-  (function() {
-    'use strict';
+(function() {
+  'use strict';
 
-      module.exports = function(id) {
+  module.exports = function(id) {
 
-        const CENTS_MULTIPLIER = 100;
-        const TYPE_COL = 23;
-        const DESC_COL_ARR = [22, 24, 25];
-        const DATE_COL = 18;
-        const LOC_COL = 27;
-        const AMOUNT_COL = 21;
+    const CENTS_MULTIPLIER = 100;
+    const TYPE_COL = 23;
+    const DESC_COL_ARR = [22, 24, 25];
+    const DATE_COL = 18;
+    const LOC_COL = 27;
+    const AMOUNT_COL = 21;
 
-        return {
-          id: () => id,
-          type: (arr) => arr[TYPE_COL],
-          status: () =>  null,
-          latitude: (arr) => arr[LOC_COL] ? arr[LOC_COL][1] : null,
-          longitude: (arr) => arr[LOC_COL] ? arr[LOC_COL][2] : null,
-          units: () => null,
-          timestamp: (arr) => arr[DATE_COL],
-          description: (arr) => {
-            const desc0 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][0] : null;
-            const desc1 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][1] : null;
-            const desc2 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][2] : null;
-            return arr[TYPE_COL] + ': ' + desc0 + ',' + desc1 + ',' + desc2;
-          },
-          amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
-        };
-      };
-  }());
+    return {
+      id: () => id,
+      type: (arr) => arr[TYPE_COL],
+      status: () => null,
+      latitude: (arr) => arr[LOC_COL] ? arr[LOC_COL][1] : null,
+      longitude: (arr) => arr[LOC_COL] ? arr[LOC_COL][2] : null,
+      units: () => null,
+      timestamp: (arr) => arr[DATE_COL],
+      description: (arr) => {
+        const desc0 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][0] : null;
+        const desc1 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][1] : null;
+        const desc2 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][2] : null;
+        return arr[TYPE_COL] + ': ' + desc0 + ',' + desc1 + ',' + desc2;
+      },
+      amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
+    };
+  };
+}());
