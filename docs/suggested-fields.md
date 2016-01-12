@@ -1,18 +1,3 @@
-# Suggested Fields
-
-```javascript
-{
-    "Lat": latitude,
-    "Lon": longitude,
-    "Time": time
-    "Type": ?
-    "Status": ?
-    "Units": ?
-    "Amount": dollar amount?
-    "Description": ?
-}
-```
-
 # Suggested Parsed Format
 
 ```javascript
