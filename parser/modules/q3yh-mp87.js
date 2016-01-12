@@ -167,30 +167,30 @@
 
 /* SAMPLE ROW - POSITION VALUES ARE WRONG
  *
-    0: 857798, 
-    1: "A157A3AE-DFED-4F7E-AC14-23447D82FC42", 
-    2: 857798, 
-    3: 1451988130, 
-    4: "393811", 
-    5: 1451988130, 
-    6: "393811", 
-    7: null, 
-    8: "16-000050", 
-    9: "P16-000004", 
-    10: "Residential - Existing", 
-    11: "275 HIGHLAND AVE", 
-    12: "J. J. Sullivan Plumbing & Heating Co., INC", 
-    13: "346 Somerville Ave.", 
-    14: "Somerville MA 02143", 
-    15: "UNDERGROUND SANITARY PIPE REPLACEMENT", 
-    16: "2016-01-04T00:00:00", 
-    17: "2016-01-04T00:00:00", 
-    18: "2016-07-04T00:00:00", 
-    19: "Issued", 
-    20: null, 
-    21: "60", 
-    22: "60", 
-    23: "42.3919932", 
+    0: 857798,
+    1: "A157A3AE-DFED-4F7E-AC14-23447D82FC42",
+    2: 857798,
+    3: 1451988130,
+    4: "393811",
+    5: 1451988130,
+    6: "393811",
+    7: null,
+    8: "16-000050",
+    9: "P16-000004",
+    10: "Residential - Existing",
+    11: "275 HIGHLAND AVE",
+    12: "J. J. Sullivan Plumbing & Heating Co., INC",
+    13: "346 Somerville Ave.",
+    14: "Somerville MA 02143",
+    15: "UNDERGROUND SANITARY PIPE REPLACEMENT",
+    16: "2016-01-04T00:00:00",
+    17: "2016-01-04T00:00:00",
+    18: "2016-07-04T00:00:00",
+    19: "Issued",
+    20: null,
+    21: "60",
+    22: "60",
+    23: "42.3919932",
     24: "-71.1114597"
 */
 
@@ -199,13 +199,13 @@
 
   const CENTS_MULTIPLIER = 100;
 
-  const AMT_COL = 14; // amount paid
-  const DSP_COL = 8; // descritption 
-  const ISD_COL = 10; // issue date
-  const LAT_COL = 16; // latitude
-  const LON_COL = 17; // longitude
-  const STA_COL = 12; // status
-  const TYP_COL = 3; // permit type
+  const AMT_COL = 21; // amount paid
+  const DSP_COL = 15; // descritption
+  const ISD_COL = 16; // issue date
+  const LAT_COL = 23; // latitude
+  const LON_COL = 24; // longitude
+  const STA_COL = 19; // status
+  const TYP_COL = 10; // permit type
 
   module.exports = function(id) {
     return {
@@ -241,4 +241,3 @@
     };
   };
 }());
-
