@@ -2,7 +2,7 @@
 
 ## similar data, with lat lons
 ```
-24uj-dj8v.json - Kevin - DONE
+24uj-dj8v.json - Kevin - DONE - no type, units, status fields
 2hre-tvqe.json - Kevin - DONE
 47eb-r92t.json - Kevin
 bwg6-98m2.json - Kevin
@@ -11,7 +11,7 @@ k6m8-62kn.json - Chris
 m88u-pqki.json - Chris
 mags-97de.json - Chris
 msk6-43c6.json - Chris
-stav-rdug.json - Scott
+stav-rdug.json - Scott - DONE - no type, units, status fields
 vcj3-ncb3.json - Scott
 ydr8-5enu.json - Scott
 rcm3-fn58.json - Scott
