@@ -70,6 +70,10 @@ new york
 - nyc
   - bldg
   - boiler and industrial op permits
+  
+> [How NYC's Decade of Rezoning Changed the City of Industry](http://ny.curbed.com/archives/2014/01/16/how_nycs_decade_of_rezoning_changed_the_city_of_industry.php)
+
+> <img src="https://ny.curbed.com/uploads/zoningillustration-thumb.jpg" height="200">
 
 ### South
 
@@ -80,14 +84,14 @@ lousiana
   
 > permit counts since 2012 (left), relative to flooding (right)
 
-> <img src="https://dl.dropboxusercontent.com/u/705531/permits.png" width="400"> <img src="https://dl.dropboxusercontent.com/u/705531/katrina.png" width="400">
+> <img src="https://dl.dropboxusercontent.com/u/705531/permits.png" height="200"> <img src="https://dl.dropboxusercontent.com/u/705531/katrina.png" height="200">
 
 ### Well Building Permits
 colorado
 
 > 14 year "Colorado River Drought Forces a Painful Reckoning for States"
 
-> <img src="https://dl.dropboxusercontent.com/u/705531/water.png" width="400">
+> <img src="https://dl.dropboxusercontent.com/u/705531/water.png" height="200">
 
 
 ### Canadian Building Permits
@@ -96,6 +100,6 @@ alberta
 
 > five year price of oil
 
-> <img src="https://dl.dropboxusercontent.com/u/705531/oil.png" width="400">
+> <img src="https://dl.dropboxusercontent.com/u/705531/oil.png" height="200">
 
 
