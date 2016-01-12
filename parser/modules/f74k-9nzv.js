@@ -76,20 +76,20 @@
     SAMPLE ROW
     {
         0: 1,
-        2: "A10E3E08-60BD-4094-B51B-5EA50EA8BD98",
-        3: 1,
-        4: 1428719457,
-        5: "914166",
-        6: 1428719473,
-        7: "914166",
-        8: "{\n}",
-        9: "15-32",
-        10: "2015-04-10T00:00:00",
-        11: "212189.0",
-        12: "Robert McGinity",
-        13: [ "{\"address\":\"938 W Fairview\",\"city\":\"Colfax\",\"state\":\"WA\",\"zip\":\"\"}", "46.87040143100006", "-117.37334436599997", null, false ],
-        14: "Addition and Shop",
-        15: "2549.7"
+        1: "A10E3E08-60BD-4094-B51B-5EA50EA8BD98",
+        2: 1,
+        3: 1428719457,
+        4: "914166",
+        5: 1428719473,
+        6: "914166",
+        7: "{\n}",
+        8: "15-32",
+        9: "2015-04-10T00:00:00",
+        10: "212189.0",
+        11: "Robert McGinity",
+        12: [ "{\"address\":\"938 W Fairview\",\"city\":\"Colfax\",\"state\":\"WA\",\"zip\":\"\"}", "46.87040143100006", "-117.37334436599997", null, false ],
+        13: "Addition and Shop",
+        14: "2549.7"
     }
 */
 
@@ -98,11 +98,11 @@
 
   const CENTS_MULTIPLIER = 100;
 
-  const LAT_COL = 13;
-  const LON_COL = 13;
-  const DATE_COL = 10;
-  const DESC_COL = 14;
-  const AMOUNT_COL = 15;
+  const LAT_COL = 12;
+  const LON_COL = 12;
+  const DATE_COL = 11;
+  const DESC_COL = 13;
+  const AMOUNT_COL = 14;
 
   module.exports = function(id) {
     return {
@@ -110,10 +110,10 @@
       type: () => null,
       status: () => null,
       latitude: (arr) => {
-        return arr[LAT_COL] !== null ? arr[LAT_COL][4] : null;
+        return arr[LAT_COL] !== null ? arr[LAT_COL][1] : null;
       },
       longitude: (arr) => {
-        return arr[LON_COL] !== null ? arr[LON_COL][5] : null;
+        return arr[LON_COL] !== null ? arr[LON_COL][2] : null;
       },
       units: () => null,
       timestamp: (arr) => arr[DATE_COL],
