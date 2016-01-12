@@ -265,6 +265,9 @@
   const TYPE_DESC = 12;
   const SUBTYPE_DESC = 13;
 
+  const BAD_DATE_FORMAT = /(\d{4})\-(\d{2})\-(\d{2})/;
+  const BAD_DATE_FORMAT2 = /(\d{2})\/(\d{2})\/(\d{4}) 00:00:00/;
+
   module.exports = function(id) {
     return {
       id: () => id,
@@ -275,7 +278,21 @@
       latitude: (arr) => arr[LAT_COL],
       longitude: (arr) => arr[LON_COL],
       units: () => null,
-      timestamp: (arr) => arr[DATE_COL],
+      timestamp: (arr) => {
+        if (arr[DATE_COL]) {
+          const match = BAD_DATE_FORMAT.exec(arr[DATE_COL]);
+          const match2 = BAD_DATE_FORMAT2.exec(arr[DATE_COL]);
+          if (match) {
+            return new Date(`${match[1]}-${match[2]}-${match[3]}T00:00:00-05:00`).toISOString();
+          } else if (match2) {
+            return new Date(`${match2[3]}-${match2[1]}-${match2[2]}T00:00:00-05:00`).toISOString();
+          } else {
+            return arr[DATE_COL];
+          }
+        } else  {
+          return null;
+        }
+      },
       description: (arr) => arr[DESC_COL],
       amount: () => null
     };
