@@ -307,12 +307,18 @@
             id: () => id,
             type: (arr) => arr[TYPE_COL],
             status: (arr) =>  arr[STATUS_COL],
-            latitude: (arr) => arr[LAT_COL][1],
-            longitude: (arr) => arr[LON_COL][2],
+            latitude: (arr) => {
+              return arr[LAT_COL] != null ? arr[LAT_COL][1] : null;
+            },
+            longitude: (arr) => {
+              return arr[LON_COL] != null ? arr[LON_COL][2] : null;
+            },
             units: () => null,
             timestamp: (arr) => arr[DATE_COL],
             description: (arr) => arr[DESC_COL],
-            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
+            amount: (arr) => {
+              return arr[AMOUNT_COL] != null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+            }
         };
     };
 

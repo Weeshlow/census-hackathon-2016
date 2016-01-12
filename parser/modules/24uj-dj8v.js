@@ -272,7 +272,9 @@
             units: (arr) => arr[UNITS_COL],
             timestamp: (arr) => arr[DATE_COL],
             description: (arr) => arr[LEGAL_DESC_COL] + ': ' + arr[JOB_DESC_COL],
-            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER,
+            amount: (arr) => {
+              return arr[AMOUNT_COL] != null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+            }
         };
     };
 
