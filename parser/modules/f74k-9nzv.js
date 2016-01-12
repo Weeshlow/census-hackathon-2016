@@ -94,34 +94,34 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const CENTS_MULTIPLIER = 100;
+  const CENTS_MULTIPLIER = 100;
 
-    const LAT_COL = 13;
-    const LON_COL = 13;
-    const DATE_COL = 10;
-    const DESC_COL = 14;
-    const AMOUNT_COL = 15;
+  const LAT_COL = 13;
+  const LON_COL = 13;
+  const DATE_COL = 10;
+  const DESC_COL = 14;
+  const AMOUNT_COL = 15;
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
-            type: () => null,
-            status: () => null,
-            latitude: (arr) => {
-              return arr[LAT_COL] !== null ? arr[LAT_COL][4] : null;
-            },
-            longitude: (arr) => {
-              return arr[LON_COL] !== null ? arr[LON_COL][5] : null;
-            },
-            units: () => null,
-            timestamp: (arr) => arr[DATE_COL],
-            description: (arr) => {
-              return arr[DESC_COL] !== null ? arr[DESC_COL].trim() : null;
-            },
-            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
-        };
+  module.exports = function(id) {
+    return {
+      id: () => id,
+      type: () => null,
+      status: () => null,
+      latitude: (arr) => {
+        return arr[LAT_COL] !== null ? arr[LAT_COL][4] : null;
+      },
+      longitude: (arr) => {
+        return arr[LON_COL] !== null ? arr[LON_COL][5] : null;
+      },
+      units: () => null,
+      timestamp: (arr) => arr[DATE_COL],
+      description: (arr) => {
+        return arr[DESC_COL] !== null ? arr[DESC_COL].trim() : null;
+      },
+      amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
     };
+  };
 
 }());

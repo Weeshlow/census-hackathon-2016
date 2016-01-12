@@ -325,28 +325,28 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const CENTS_MULTIPLIER = 100;
-    const DATE_COL = 11;
-    const LAT_COL = 136;
-    const LON_COL = 137;
-    const DESC_COL = 20;
-    const AMOUNT_COL = 15;
-    const TYPE_COL = 10;
+  const CENTS_MULTIPLIER = 100;
+  const DATE_COL = 11;
+  const LAT_COL = 136;
+  const LON_COL = 137;
+  const DESC_COL = 20;
+  const AMOUNT_COL = 15;
+  const TYPE_COL = 10;
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
-            type: (arr) => arr[TYPE_COL],
-            status: () =>  null,
-            latitude: (arr) => arr[LAT_COL],
-            longitude: (arr) => arr[LON_COL],
-            units: () => null,
-            timestamp: (arr) => arr[DATE_COL],
-            description: (arr) => arr[DESC_COL],
-            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
-        };
+  module.exports = function(id) {
+    return {
+      id: () => id,
+      type: (arr) => arr[TYPE_COL],
+      status: () => null,
+      latitude: (arr) => arr[LAT_COL],
+      longitude: (arr) => arr[LON_COL],
+      units: () => null,
+      timestamp: (arr) => arr[DATE_COL],
+      description: (arr) => arr[DESC_COL],
+      amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
     };
+  };
 
 }());

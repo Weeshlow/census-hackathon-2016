@@ -195,50 +195,50 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const CENTS_MULTIPLIER = 100;
+  const CENTS_MULTIPLIER = 100;
 
-    const AMT_COL = 14; // amount paid
-    const DSP_COL =  8; // descritption 
-    const ISD_COL = 10; // issue date
-    const LAT_COL = 16; // latitude
-    const LON_COL = 17; // longitude
-    const STA_COL = 12; // status
-    const TYP_COL =  3; // permit type
+  const AMT_COL = 14; // amount paid
+  const DSP_COL = 8; // descritption 
+  const ISD_COL = 10; // issue date
+  const LAT_COL = 16; // latitude
+  const LON_COL = 17; // longitude
+  const STA_COL = 12; // status
+  const TYP_COL = 3; // permit type
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
+  module.exports = function(id) {
+    return {
+      id: () => id,
 
-            type: (arr) => {
-                return arr[TYP_COL];
-            },
+      type: (arr) => {
+        return arr[TYP_COL];
+      },
 
-            status: (arr) => {
-                return arr[STA_COL];
-            },
+      status: (arr) => {
+        return arr[STA_COL];
+      },
 
-            latitude: (arr) => {
-                return arr[LAT_COL];
-            },
+      latitude: (arr) => {
+        return arr[LAT_COL];
+      },
 
-            longitude: (arr) => {
-                return arr[LON_COL];
-            },
+      longitude: (arr) => {
+        return arr[LON_COL];
+      },
 
-            units: () => null,
+      units: () => null,
 
-            timestamp: (arr) => {
-                return arr[ISD_COL];
-            },
+      timestamp: (arr) => {
+        return arr[ISD_COL];
+      },
 
-            description: (arr) => {
-                return arr[DSP_COL];
-            },
-        
-            amount: (arr) => arr[AMT_COL] * CENTS_MULTIPLIER
-        };
+      description: (arr) => {
+        return arr[DSP_COL];
+      },
+
+      amount: (arr) => arr[AMT_COL] * CENTS_MULTIPLIER
     };
+  };
 }());
 

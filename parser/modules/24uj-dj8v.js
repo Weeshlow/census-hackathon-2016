@@ -251,31 +251,31 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const CENTS_MULTIPLIER = 100;
-    const DATE_COL = 8;
-    const LAT_COL = 25;
-    const LON_COL = 26;
-    const UNITS_COL = 24;
-    const LEGAL_DESC_COL = 15;
-    const JOB_DESC_COL = 18;
-    const AMOUNT_COL = 22;
+  const CENTS_MULTIPLIER = 100;
+  const DATE_COL = 8;
+  const LAT_COL = 25;
+  const LON_COL = 26;
+  const UNITS_COL = 24;
+  const LEGAL_DESC_COL = 15;
+  const JOB_DESC_COL = 18;
+  const AMOUNT_COL = 22;
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
-            type: () => null,
-            status: () => null,
-            latitude: (arr) => arr[LAT_COL],
-            longitude: (arr) => arr[LON_COL],
-            units: (arr) => arr[UNITS_COL],
-            timestamp: (arr) => arr[DATE_COL],
-            description: (arr) => arr[LEGAL_DESC_COL] + ': ' + arr[JOB_DESC_COL],
-            amount: (arr) => {
-              return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
-            }
-        };
+  module.exports = function(id) {
+    return {
+      id: () => id,
+      type: () => null,
+      status: () => null,
+      latitude: (arr) => arr[LAT_COL],
+      longitude: (arr) => arr[LON_COL],
+      units: (arr) => arr[UNITS_COL],
+      timestamp: (arr) => arr[DATE_COL],
+      description: (arr) => arr[LEGAL_DESC_COL] + ': ' + arr[JOB_DESC_COL],
+      amount: (arr) => {
+        return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+      }
     };
+  };
 
 }());

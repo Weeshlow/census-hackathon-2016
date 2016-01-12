@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "TEST=true node index.js"
+    "test": "TEST=true node index.js",
+    "fmt": "./node_modules/.bin/jsfmt -w ./modules/*.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/unchartedsoftware/census-hackathon-2016/issues"
   },
-  "homepage": "https://github.com/unchartedsoftware/census-hackathon-2016#readme"
+  "homepage": "https://github.com/unchartedsoftware/census-hackathon-2016#readme",
+  "devDependencies": {
+    "jsfmt": "0.5.2"
+  }
 }
