@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/unchartedsoftware/census-hackathon-2016.git"
   },
-  "author": "Sean McIntyre <s.mcintyre@xverba.ca> (http://xverba.ca/)",
+  "author": "Sean McIntyre <smcintyre@uncharted.software>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/unchartedsoftware/census-hackathon-2016/issues"
