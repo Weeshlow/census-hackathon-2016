@@ -292,50 +292,32 @@
 (function() {
     'use strict';
 
-    var CENTS_MULTIPLIER = 100;
-    var YEAR_COL = 15;
-    var MONTH_COL = 13;
-    var DAY_COL = 14;
+    const CENTS_MULTIPLIER = 100;
+    const YEAR_COL = 15;
+    const MONTH_COL = 13;
+    const DAY_COL = 14;
 
-    var LOC_COL = 37;
-    var LOC_LAT_COL = 1;
-    var LOC_LON_COL = 2;
+    const LOC_COL = 37;
+    const LOC_LAT_COL = 1;
+    const LOC_LON_COL = 2;
 
-    var TYPE_COL = 17;
+    const TYPE_COL = 17;
 
-    var UNITS_COL = 19;
-    var DESC_COL = 25;
-    var AMOUNT_COL = 20;
+    const UNITS_COL = 19;
+    const DESC_COL = 25;
+    const AMOUNT_COL = 20;
 
     module.exports = function(id) {
         return {
-            id: function() {
-                return id;
-            },
-            type: function(arr) {
-                return arr[TYPE_COL];
-            },
-            status: function() {
-                return null;
-            },
-            latitude: function(arr) {
-                return arr[LOC_COL][LOC_LAT_COL];
-            },
-            longitude: function(arr) {
-                return arr[LOC_COL][LOC_LON_COL];
-            },
-            units: function(arr) {
-                return arr[UNITS_COL];
-            },
-            timestamp: function(arr) {
-                return arr[YEAR_COL] + '-' + arr[MONTH_COL] + '-' + arr[DAY_COL] + 'T00:00:00';  // ISO datetime string
-            },
-            description: function(arr) {
-                return arr[TYPE_COL] + ': ' + arr[DESC_COL];
-            },
-            amount: function(arr) {
-                return arr[AMOUNT_COL] * CENTS_MULTIPLIER;
-            }
+            id: () => id,
+            type: (arr) => arr[TYPE_COL],
+            status: () =>  null,
+            latitude: (arr) => arr[LOC_COL][LOC_LAT_COL],
+            longitude: (arr) => arr[LOC_COL][LOC_LON_COL],
+            units: (arr) => arr[UNITS_COL],
+            timestamp: (arr) => arr[YEAR_COL] + '-' + arr[MONTH_COL] + '-' + arr[DAY_COL] + 'T00:00:00',  // ISO datetime string
+            description: (arr) => arr[TYPE_COL] + ': ' + arr[DESC_COL],
+            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
         };
     };
 

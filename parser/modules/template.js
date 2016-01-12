@@ -71,35 +71,15 @@
 
     module.exports = function(id) {
         return {
-            id: function() {
-                return id;
-            },
-            type: function(/* arr */) {
-                return null;
-            },
-            status: function(/* arr */) {
-                return null;
-            },
-            latitude: function(/* arr */) {
-                return null;
-            },
-            longitude: function(/* arr */) {
-                return null;
-            },
-            units: function(/* arr */) {
-                return null;
-            },
-            timestamp: function(/* arr */) {
-                // ISO Date format!
-                return null;
-            },
-            description: function() {
-                return null;
-            },
-            amount: function(/* arr */) {
-                // Use Cents!
-                return null;
-            }
+            id: () => id,
+            type: (/* arr */) => null,
+            status: (/* arr */) => null,
+            latitude: (/* arr */) => null,
+            longitude: (/* arr */) => null,
+            units: (/* arr */) => null,
+            timestamp: (/* arr */) => null, // ISO Date format!
+            description: (/* arr */) => null,
+            amount: (/* arr */) => null // Use Cents!
         };
     };
 

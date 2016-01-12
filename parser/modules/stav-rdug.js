@@ -80,22 +80,22 @@
 /*
     SAMPLE ROW
     {
-        0: 29568, 
-        1: "B95DE9D4-AA88-4048-A85B-176DDDA980A9", 
-        2: 29568, 
-        3: 1358449329, 
-        4: "700326", 
-        5: 1358450606, 
-        6: "700326", 
-        7: "{\n}", 
-        8: "2008-10-07T00:00:00", 
-        9: "SFD20081000", 
-        10: [ "{\"address\":\"625 VINCENT AVE\",\"city\":\"ROCKFORD\",\"state\":\"IL\",\"zip\":\"61102\"}", "42.26680691153598", "-89.15889137240612", null, false ], 
-        11: "11-19-480-026", 
-        12: null, 
-        13: null, 
-        14: "7000.00", 
-        15: null, 
+        0: 29568,
+        1: "B95DE9D4-AA88-4048-A85B-176DDDA980A9",
+        2: 29568,
+        3: 1358449329,
+        4: "700326",
+        5: 1358450606,
+        6: "700326",
+        7: "{\n}",
+        8: "2008-10-07T00:00:00",
+        9: "SFD20081000",
+        10: [ "{\"address\":\"625 VINCENT AVE\",\"city\":\"ROCKFORD\",\"state\":\"IL\",\"zip\":\"61102\"}", "42.26680691153598", "-89.15889137240612", null, false ],
+        11: "11-19-480-026",
+        12: null,
+        13: null,
+        14: "7000.00",
+        15: null,
         16: "TESTING - FOUND"
     }
 */
@@ -103,43 +103,25 @@
 (function() {
     'use strict';
 
-    var CENTS_MULTIPLIER = 100;
-    var DATE_COL = 8;
-    var LOC_COL = 10;
-    var LOC_LAT_COL = 1;
-    var LOC_LON_COL = 2;
-    var DESC_COL = 16;
-    var AMOUNT_COL = 14;
+    const CENTS_MULTIPLIER = 100;
+    const DATE_COL = 8;
+    const LOC_COL = 10;
+    const LOC_LAT_COL = 1;
+    const LOC_LON_COL = 2;
+    const DESC_COL = 16;
+    const AMOUNT_COL = 14;
 
     module.exports = function(id) {
         return {
-            id: function() {
-                return id;
-            },
-            type: function() {
-                return null;
-            },
-            status: function() {
-                return null;
-            },
-            latitude: function(arr) {
-                return arr[LOC_COL][LOC_LAT_COL];
-            },
-            longitude: function(arr) {
-                return arr[LOC_COL]LOC_LON_COL];
-            },
-            units: function(arr) {
-                return null;
-            },
-            timestamp: function(arr) {
-                return arr[DATE_COL];  // ISO datetime string
-            },
-            description: function(arr) {
-                return arr[DESC_COL];
-            },
-            amount: function(arr) {
-                return arr[AMOUNT_COL] * CENTS_MULTIPLIER;
-            }
+            id: () => id,
+            type: () => null,
+            status: () => null,
+            latitude: (arr) => arr[LOC_COL][LOC_LAT_COL],
+            longitude: (arr) => arr[LOC_COL][LOC_LON_COL],
+            units: () => null,
+            timestamp: (arr) => arr[DATE_COL],  // ISO datetime string
+            description: (arr) => arr[DESC_COL],
+            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
         };
     };
 

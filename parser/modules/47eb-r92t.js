@@ -288,45 +288,27 @@
 (function() {
     'use strict';
 
-    var CENTS_MULTIPLIER = 100;
+    const CENTS_MULTIPLIER = 100;
 
-    var TYPE_COL = 9;
-    var STATUS_COL = 20;
-    var LAT_COL = 24;
-    var LON_COL = 25;
-    var DATE_COL = 16;
-    var DESC_COL = 11;
-    var AMOUNT_COL = 14;
+    const TYPE_COL = 9;
+    const STATUS_COL = 20;
+    const LAT_COL = 24;
+    const LON_COL = 25;
+    const DATE_COL = 16;
+    const DESC_COL = 11;
+    const AMOUNT_COL = 14;
 
     module.exports = function(id) {
         return {
-            id: function() {
-                return id;
-            },
-            type: function(arr) {
-                return arr[TYPE_COL];
-            },
-            status: function(arr) {
-                return arr[STATUS_COL];
-            },
-            latitude: function(arr) {
-                return arr[LAT_COL];
-            },
-            longitude: function(arr) {
-                return arr[LON_COL];
-            },
-            units: function() {
-                return null;
-            },
-            timestamp: function(arr) {
-                return arr[DATE_COL];
-            },
-            description: function(arr) {
-                return arr[DESC_COL];
-            },
-            amount: function(arr) {
-                return arr[AMOUNT_COL] * CENTS_MULTIPLIER;
-            }
+            id: () => id,
+            type: (arr) => arr[TYPE_COL],
+            status: (arr) => arr[STATUS_COL],
+            latitude: (arr) => arr[LAT_COL],
+            longitude: (arr) => arr[LON_COL],
+            units: () => null,
+            timestamp: (arr) => arr[DATE_COL],
+            description: (arr) => arr[DESC_COL],
+            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER,
         };
     };
 

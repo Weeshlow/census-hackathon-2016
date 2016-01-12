@@ -253,44 +253,26 @@
 (function() {
     'use strict';
 
-    var CENTS_MULTIPLIER = 100;
-    var DATE_COL = 8;
-    var LAT_COL = 25;
-    var LON_COL = 26;
-    var UNITS_COL = 24;
-    var LEGAL_DESC_COL = 15;
-    var JOB_DESC_COL = 18;
-    var AMOUNT_COL = 22;
+    const CENTS_MULTIPLIER = 100;
+    const DATE_COL = 8;
+    const LAT_COL = 25;
+    const LON_COL = 26;
+    const UNITS_COL = 24;
+    const LEGAL_DESC_COL = 15;
+    const JOB_DESC_COL = 18;
+    const AMOUNT_COL = 22;
 
     module.exports = function(id) {
         return {
-            id: function() {
-                return id;
-            },
-            type: function() {
-                return null;
-            },
-            status: function() {
-                return null;
-            },
-            latitude: function(arr) {
-                return arr[LAT_COL];
-            },
-            longitude: function(arr) {
-                return arr[LON_COL];
-            },
-            units: function(arr) {
-                return arr[UNITS_COL];
-            },
-            timestamp: function(arr) {
-                return arr[DATE_COL];
-            },
-            description: function(arr) {
-                return arr[LEGAL_DESC_COL] + ': ' + arr[JOB_DESC_COL];
-            },
-            amount: function(arr) {
-                return arr[AMOUNT_COL] * CENTS_MULTIPLIER;
-            }
+            id: () => id,
+            type: () => null,
+            status: () => null,
+            latitude: (arr) => arr[LAT_COL],
+            longitude: (arr) => arr[LON_COL],
+            units: (arr) => arr[UNITS_COL],
+            timestamp: (arr) => arr[DATE_COL],
+            description: (arr) => arr[LEGAL_DESC_COL] + ': ' + arr[JOB_DESC_COL],
+            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER,
         };
     };
 
