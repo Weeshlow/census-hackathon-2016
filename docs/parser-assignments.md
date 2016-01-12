@@ -5,7 +5,7 @@
 24uj-dj8v.json - Kevin - DONE - no type, units, status fields
 2hre-tvqe.json - Kevin - DONE - no units
 47eb-r92t.json - Kevin - DONE - no units
-bwg6-98m2.json - Kevin
+bwg6-98m2.json - Kevin - DONE - no type, units, status, timestamp, amount
 f74k-9nzv.json - Kevin
 k6m8-62kn.json - Chris
 m88u-pqki.json - Chris
