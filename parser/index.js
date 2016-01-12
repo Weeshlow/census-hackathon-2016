@@ -38,7 +38,7 @@ function processBuffer(file) {
   }
 }
 
-// find records in the data and pump them through the parser
+// pump a record through the correct parser. output to csv file.
 function processRecord(file, line) {
   if (line[0] === ',') {
     line = line.slice(1).trim();
