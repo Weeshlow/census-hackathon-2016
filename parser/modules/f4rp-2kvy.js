@@ -212,8 +212,8 @@
   module.exports = function(id) {
     return {
       id: () => id,
-      type: (arr) => 'BOILER ' + arr[TYPE_COL],
-      status: (arr) => arr[STATUS_COL],
+      type: (arr) => arr[TYPE_COL] !== null ? 'BOILER ' + arr[TYPE_COL].trim() :  null,
+      status: (arr) => arr[STATUS_COL] !== null ? arr[STATUS_COL].trim() : null,
       latitude: () => null,
       longitude: () => null,
       units: () => null,

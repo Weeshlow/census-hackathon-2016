@@ -178,10 +178,11 @@ Sample record:
       units: () => null,
       timestamp: (arr) => arr[DATE_COL],
       description: (arr) => {
-        const desc0 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][0] : null;
-        const desc1 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][1] : null;
-        const desc2 = arr[DESC_COL_ARR] ? arr[DESC_COL_ARR][2] : null;
-        return arr[TYPE_COL] + ': ' + desc0 + ',' + desc1 + ',' + desc2;
+        let result = [];
+        if (arr[DESC_COL_ARR]) { result.push(arr[DESC_COL_ARR][0]); }
+        if (arr[DESC_COL_ARR]) {  result.push(arr[DESC_COL_ARR][1]); }
+        if (arr[DESC_COL_ARR]) { result.push(arr[DESC_COL_ARR][2]); }
+        return arr[TYPE_COL] + ': ' + result.join(' ');
       },
       amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
     };

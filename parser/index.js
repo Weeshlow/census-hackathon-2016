@@ -52,7 +52,11 @@ function processRecord(file, line) {
   try {
     let values = [];
     for (let key of Object.keys(modules[file])) {
-      values.push(JSON.stringify(modules[file][key](record)));
+      let field = JSON.stringify(modules[file][key](record));
+      if (typeof field === 'string') {
+        field = field.trim();
+      }
+      values.push(field);
     }
     outputStreams[file].write(values.join(',') + '\n');
   } catch (lineerr) {
