@@ -499,7 +499,7 @@
       longitude: (arr) => arr[LON_COL] ? arr[LON_COL][2] : null,
       units: () => null,
       timestamp: (arr) => arr[DATE_COL],
-      description: (arr) => arr[DESC_COL] ? arr[DESC_COL].trim() : null,
+      description: (arr) => arr[DESC_COL] ? arr[DESC_COL].trim().replace('Work Descripton: ','').replace(/\r\n/g,' ') : null,
       amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
     };
   };
