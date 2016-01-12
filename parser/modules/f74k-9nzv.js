@@ -100,7 +100,7 @@
 
   const LAT_COL = 12;
   const LON_COL = 12;
-  const DATE_COL = 11;
+  const DATE_COL = 9;
   const DESC_COL = 13;
   const AMOUNT_COL = 14;
 
