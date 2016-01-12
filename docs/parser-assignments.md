@@ -19,7 +19,7 @@ rcm3-fn58.json - Kevin - DONE - no units, status
 
 ## similar data, with lat lons
 ```
-q3yh-mp87.json - Morgan
+q3yh-mp87.json - Morgan - no units
 xfyi-uyt5.json - Emmett
 ```
 ## similar data, null or no lat lons, text addresses
