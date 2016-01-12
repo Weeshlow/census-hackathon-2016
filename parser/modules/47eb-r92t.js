@@ -267,21 +267,22 @@
       9: "Construction",
       10: "12558 12TH AVE NW",
       11: "Construct interior non-structural alterations to existing single family residence, subject to field inspection.",
-      12: "SINGLE FAMILY / DUPLEX", "ADD/ALT",
-      13: "No plan review",
-      14: "12000",
-      15: "PARISH, DIANNA",
-      16: "2011-01-04T00:00:00",
+      12: "SINGLE FAMILY / DUPLEX",
+      13: "ADD/ALT",
+      14: "No plan review",
+      15: "12000",
+      16: "PARISH, DIANNA",
       17: "2011-01-04T00:00:00",
-      18: "2012-05-17T00:00:00",
-      19: "2012-07-04T00:00:00",
-      20: "Permit Closed",
-      21: null,
-      22: [ "http://web6.seattle.gov/dpd/PermitStatus/Project.aspx?id=6269636", null ],
-      23: null,
-      24: "47.72119585",
-      25: "-122.37139394",
-      26: [ null, "47.72119585", "-122.37139394", null, false ]
+      18: "2011-01-04T00:00:00",
+      19: "2012-05-17T00:00:00",
+      20: "2012-07-04T00:00:00",
+      21: "Permit Closed",
+      22: null,
+      23: [ "http://web6.seattle.gov/dpd/PermitStatus/Project.aspx?id=6269636", null ],
+      24: null,
+      25: "47.72119585",
+      26: "-122.37139394",
+      27: [ null, "47.72119585", "-122.37139394", null, false ]
     }
 */
 
@@ -291,12 +292,12 @@
   const CENTS_MULTIPLIER = 100;
 
   const TYPE_COL = 9;
-  const STATUS_COL = 20;
-  const LAT_COL = 24;
-  const LON_COL = 25;
-  const DATE_COL = 16;
+  const STATUS_COL = 21;
+  const LAT_COL = 25;
+  const LON_COL = 26;
+  const DATE_COL = 17;
   const DESC_COL = 11;
-  const AMOUNT_COL = 14;
+  const AMOUNT_COL = 15;
 
   module.exports = function(id) {
     return {
