@@ -273,11 +273,11 @@
             status: function() {
                 return null;
             },
-            location: function(arr) {
-                return {
-                    lat: arr[LAT_COL],
-                    lon: arr[LON_COL]
-                };
+            latitude: function(arr) {
+                return arr[LAT_COL];
+            },
+            longitude: function(arr) {
+                return arr[LON_COL];
             },
             units: function(arr) {
                 return arr[UNITS_COL];

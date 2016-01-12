@@ -80,7 +80,10 @@
             status: function(/* arr */) {
                 return null;
             },
-            location: function(/* arr */) {
+            latitude: function(/* arr */) {
+                return null;
+            },
+            longitude: function(/* arr */) {
                 return null;
             },
             units: function(/* arr */) {
