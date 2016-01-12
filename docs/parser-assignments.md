@@ -14,7 +14,7 @@ msk6-43c6.json - Kevin
 stav-rdug.json - Scott - DONE - no type, units, status
 vcj3-ncb3.json - Scott
 ydr8-5enu.json - Scott
-rcm3-fn58.json - Kevin
+rcm3-fn58.json - Kevin - DONE - no units, status
 ```
 
 ## similar data, with lat lons
