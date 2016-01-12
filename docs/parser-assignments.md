@@ -10,11 +10,11 @@ f74k-9nzv.json - Kevin - DONE - no type, units, status
 k6m8-62kn.json - Chris
 m88u-pqki.json - Chris
 mags-97de.json - Chris
-msk6-43c6.json - Chris
+msk6-43c6.json - Kevin
 stav-rdug.json - Scott - DONE - no type, units, status
 vcj3-ncb3.json - Scott
 ydr8-5enu.json - Scott
-rcm3-fn58.json - Scott
+rcm3-fn58.json - Kevin
 ```
 
 ## similar data, with lat lons
