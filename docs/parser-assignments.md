@@ -12,8 +12,8 @@ m88u-pqki.json - Chris - DONE - no units, status
 mags-97de.json - Kevin
 msk6-43c6.json - Kevin - DONE - no units, status
 stav-rdug.json - Scott - DONE - no type, units, status
-vcj3-ncb3.json - Scott
-ydr8-5enu.json - Scott
+vcj3-ncb3.json - Scott - DONE - no status 
+ydr8-5enu.json - Scott - DONE - no units, status
 rcm3-fn58.json - Kevin - DONE - no units, status
 ```
 
