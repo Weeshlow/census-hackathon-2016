@@ -227,43 +227,43 @@
       3: 1370997875,
       4: "435151",
       5: 1370997875,
-      7: "435151",
-      8: "{\n}",
-      9: "DOB Job Permit",
-      10: "SAME",
-      11: null,
-      12: "30043914901",
-      13: "EQUIPMENT WORK",
-      14: null,
-      15: "1999-06-03",
-      16: "2000-06-02",
-      17: "1999-06-03",
-      18: "PERMIT ISSUED",
-      19: "753",
-      20: "EAST 52 STREET",
-      21: "BROOKLYN",
-      22: "11203",
-      23: "BROOKLYN",
-      24: "3222087",
-      25: "3079280038",
-      26: "40.641806",
-      27: -73.92708",
-      28: null,
+      6: "435151",
+      7: "{\n}",
+      8: "DOB Job Permit",
+      11: "SAME",
+      12: null,
+      13: "30043914901",
+      14: "EQUIPMENT WORK",
+      15: null,
+      16: "1999-06-03",
+      17: "2000-06-02",
+      18: "1999-06-03",
+      19: "PERMIT ISSUED",
+      20: "753",
+      21: "EAST 52 STREET",
+      22: "BROOKLYN",
+      23: "11203",
+      24: "BROOKLYN",
+      25: "3222087",
+      26: "3079280038",
+      27: "40.641806",
+      28: -73.92708",
       29: null,
-      30: "OW"
+      30: null,
+      31: "OW"
     }
 */
 
 (function() {
   'use strict';
 
-  const LAT_COL = 26;
-  const LON_COL = 27;
-  const DESC_COL = 11;
-  const STAT_COL = 18;
-  const DATE_COL = 15;
-  const TYPE_DESC = 13;
-  const SUBTYPE_DESC = 14;
+  const LAT_COL = 27;
+  const LON_COL = 28;
+  const DESC_COL = 12;
+  const STAT_COL = 19;
+  const DATE_COL = 16;
+  const TYPE_DESC = 14;
+  const SUBTYPE_DESC = 15;
 
   module.exports = function(id) {
     return {
