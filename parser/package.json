@@ -1,0 +1,19 @@
+{
+  "name": "census-raw-parser",
+  "version": "0.0.1",
+  "description": "Parses the census raw-data into CSV",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unchartedsoftware/census-hackathon-2016.git"
+  },
+  "author": "Sean McIntyre <s.mcintyre@xverba.ca> (http://xverba.ca/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/unchartedsoftware/census-hackathon-2016/issues"
+  },
+  "homepage": "https://github.com/unchartedsoftware/census-hackathon-2016#readme"
+}
