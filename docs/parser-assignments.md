@@ -34,8 +34,8 @@ f7tt-z5vu.json
 fesm-tgxf.json
 cii2-ipkp.json
 qr2t-2k7s.json
-f4rp-2kvy.json
-rfav-vmja.json
+f4rp-2kvy.json - Scott
+rfav-vmja.json - Scott
 ```
 
 ## bad data. map blocks?
