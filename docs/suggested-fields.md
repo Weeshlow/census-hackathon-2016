@@ -17,10 +17,8 @@
 
 ```javascript
 {
-    "location": {
-        "lat": double,
-        "lon": double,
-    },
+    "latitude": double,
+    "longitude": double,
     "timestamp": string, // (UTC ISO 8601)
     "type": string,
     "status": string,

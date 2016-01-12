@@ -313,11 +313,11 @@
             status: function(arr) {
                 return arr[STATUS_COL];
             },
-            location: function(arr) {
-                return {
-                    lat: arr[LAT_COL][1],
-                    lon: arr[LON_COL][2]
-                };
+            latitude: function(arr) {
+                return arr[LAT_COL][1];
+            },
+            longitude: function(arr) {
+                return arr[LON_COL][2];
             },
             units: function() {
                 return null;
