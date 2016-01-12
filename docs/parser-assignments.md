@@ -1,6 +1,6 @@
 # Files Parser Assignments
 
-## similar data, with lat lons
+## Similar data, with lat lons
 ```
 24uj-dj8v.json - Kevin - DONE - no type, units, status
 2hre-tvqe.json - Kevin - DONE - no units
@@ -17,12 +17,13 @@ ydr8-5enu.json - Scott - DONE - no units, status
 rcm3-fn58.json - Kevin - DONE - no units, status
 ```
 
-## similar data, with lat lons
+## Similar data, with lat lons
 ```
 q3yh-mp87.json - Morgan - DONE - no units
 xfyi-uyt5.json - Emmett
 ```
-## similar data, null or no lat lons, text addresses
+
+## Similar data, null or no lat lons, text addresses
 ```
 4hr8-fgbf.json
 akhc-zaz6.json
@@ -38,13 +39,13 @@ f4rp-2kvy.json - Scott - DONE - no lat/units,
 rfav-vmja.json - Scott - DONE - no status, lat/lon, units
 ```
 
-## bad data. map blocks?
+## Bad data. map blocks?
 ```
 rzd3-6sat.json
 4wyh-gtfb.json
 ```
 
-## no location data at all
+## No location data at all
 ```
 aw7g-a8b9.json
 knv6-r5ad.json
