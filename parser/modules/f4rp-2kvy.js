@@ -201,27 +201,27 @@
 */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const CENTS_MULTIPLIER = 100;
-    const DATE_COL = 26;
-    const STATUS_COL = 27;
-    const TYPE_COL = 10;
-    const DESC1_COL = 19;
-    const DESC2_COL = 23;
+  const CENTS_MULTIPLIER = 100;
+  const DATE_COL = 26;
+  const STATUS_COL = 27;
+  const TYPE_COL = 10;
+  const DESC1_COL = 19;
+  const DESC2_COL = 23;
 
-    module.exports = function(id) {
-        return {
-            id: () => id,
-            type: () => 'BOILER ' + arr[TYPE_COL],
-            status: () => arr[STATUS_COL],
-            latitude: (arr) => null,
-            longitude: (arr) => null,
-            units: () => null,
-            timestamp: (arr) => arr[DATE_COL],  // ISO datetime string
-            description: (arr) => arr[DESC1_COL] + ': ' + arr[DESC2_COL],
-            amount: (arr) => null
-        };
+  module.exports = function(id) {
+    return {
+      id: () => id,
+      type: () => 'BOILER ' + arr[TYPE_COL],
+      status: () => arr[STATUS_COL],
+      latitude: (arr) => null,
+      longitude: (arr) => null,
+      units: () => null,
+      timestamp: (arr) => arr[DATE_COL], // ISO datetime string
+      description: (arr) => arr[DESC1_COL] + ': ' + arr[DESC2_COL],
+      amount: (arr) => null
     };
+  };
 
 }());

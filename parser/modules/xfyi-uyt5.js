@@ -1,69 +1,5 @@
 /*
   [{
-      "id" : -1,
-      "name" : "sid",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":sid",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
-      "id" : -1,
-      "name" : "id",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":id",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
-      "id" : -1,
-      "name" : "position",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":position",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
-      "id" : -1,
-      "name" : "created_at",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":created_at",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
-      "id" : -1,
-      "name" : "created_meta",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":created_meta",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
-      "id" : -1,
-      "name" : "updated_at",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":updated_at",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
-      "id" : -1,
-      "name" : "updated_meta",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":updated_meta",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
-      "id" : -1,
-      "name" : "meta",
-      "dataTypeName" : "meta_data",
-      "fieldName" : ":meta",
-      "position" : 0,
-      "renderTypeName" : "meta_data",
-      "format" : { }
-    }, {
       "id" : 75767556,
       "name" : "Source",
       "dataTypeName" : "text",
@@ -282,57 +218,64 @@
 
 */
 
-
 /*
     SAMPLE ROW:
     {
-      0: 1370997875,
-      1: 461725,
-      2: "DOB Job Permit",
-      3: "VAS & SONS CORP",
-      4: null,
-      5: "32010861902",
-      6:  "EQUIPMENT WORK",
-      7: null,
-      8: "2010-05-06",
-      9: "2011-04-25",
-      10: "2010-05-06",
-      11: "PERMIT ISSUED",
-      12: "1954",
-      13: "OCEAN AVENUE",
-      14: "BROOKLYN",
-      15: "11230",
-      16: "BROOKLYN",
-      17: "3181615",
-      18: "3067570042",
-      19: "40.614241",
-      20: "-73.954631"
-      21: null,
-      22: "0600253"
-      23: "GC"
+      0: 1,
+      1: "98161E97-47D1-41C0-AA1D-7F7FEE5B0DF9",
+      2: 1,
+      3: 1370997875,
+      4: "435151",
+      5: 1370997875,
+      7: "435151",
+      8: "{\n}",
+      9: "DOB Job Permit",
+      10: "SAME",
+      11: null,
+      12: "30043914901",
+      13: "EQUIPMENT WORK",
+      14: null,
+      15: "1999-06-03",
+      16: "2000-06-02",
+      17: "1999-06-03",
+      18: "PERMIT ISSUED",
+      19: "753",
+      20: "EAST 52 STREET",
+      21: "BROOKLYN",
+      22: "11203",
+      23: "BROOKLYN",
+      24: "3222087",
+      25: "3079280038",
+      26: "40.641806",
+      27: -73.92708",
+      28: null,
+      29: null,
+      30: "OW"
     }
 */
 
 (function() {
   'use strict';
 
-  const LAT_COL = 19;
-  const LON_COL = 20;
-  const DESC_COL = 4;
-  const STAT_COL = 11;
-  const ISS_DATE = 8;
-  const TYPE_DESC = 6;
-  const SUBTYPE_DESC = 7;
+  const LAT_COL = 26;
+  const LON_COL = 27;
+  const DESC_COL = 11;
+  const STAT_COL = 18;
+  const DATE_COL = 15;
+  const TYPE_DESC = 13;
+  const SUBTYPE_DESC = 14;
 
   module.exports = function(id) {
     return {
       id: () => id,
-      type: (arr) => arr[TYPE_DESC] + ';' + arr[SUBTYPE_DESC],
+      type: (arr) => {
+        return arr[TYPE_DESC] + ((arr[SUBTYPE_DESC] !== null) ? (':' + arr[SUBTYPE_DESC]) : '');
+      },
       status: (arr) => arr[STAT_COL],
       latitude: (arr) => arr[LAT_COL],
       longitude: (arr) => arr[LON_COL],
       units: () => null,
-      timestamp: (arr) => arr[ISS_DATE],
+      timestamp: (arr) => arr[DATE_COL],
       description: (arr) => arr[DESC_COL],
       amount: () => null
     };
