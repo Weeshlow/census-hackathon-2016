@@ -20,7 +20,7 @@ rcm3-fn58.json - Kevin - DONE - no units, status
 ## similar data, with lat lons
 ```
 q3yh-mp87.json - Morgan - DONE - no units
-xfyi-uyt5.json - Emmett - DONE - no units, amount
+xfyi-uyt5.json - Emmett
 ```
 ## similar data, null or no lat lons, text addresses
 ```
@@ -34,8 +34,8 @@ f7tt-z5vu.json
 fesm-tgxf.json
 cii2-ipkp.json
 qr2t-2k7s.json
-f4rp-2kvy.json - Scott - DONE - no lat/lon, units, amount
-rfav-vmja.json - Scott
+f4rp-2kvy.json - Scott - DONE - no lat/units,
+rfav-vmja.json - Scott - DONE - no status, lat/lon, units
 ```
 
 ## bad data. map blocks?
