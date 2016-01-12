@@ -30,8 +30,12 @@ A quick easy read of the building permit data.
 ### West
 
 washington state
-- colfax 2015+
 - seattle
+- colfax 2015+ (32 permits)
+
+> colfax: population 2,805 as of the [2010 census](https://en.wikipedia.org/wiki/Colfax,_Washington)
+
+> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/ThreshingbeeColfaxWA.jpg/700px-ThreshingbeeColfaxWA.jpg" height="200">
 
 california
 - san francisco 2012+ (snapshots)
@@ -46,8 +50,14 @@ illinois
   - bldg
   - daley center plaza event permits
 
+> "A New York Times analysis of homicides and census data in Chicago compared areas near murders to those that were not. Residents living near homicides in the last 12 years were much more likely to be black, earn less money and lack a college degree."
+
+> <img src="https://dl.dropboxusercontent.com/u/705531/chicago.png" height="200">
+
 missouri
 - 1970+
+
+> "Ferguson, which gets its name from a 19th-century farmer who donated a portion of his land for a railroad line and depot, is a suburb of St. Louis with just over 21,200 residents, 67 percent of whom are black. In 1970, the suburb was 99 percent white. For skeptics who wonder what that has to do with anything, racial makeup does make a difference, especially considering the spark that ignited such intense civil unrest came when an unarmed 18-year-old black youth was shot to death by a white police officer. It is a scenario that historically, over the last 50 years at least, has brought not just outrage but wholesale riots in cities across the country, accompanied by looting and burning of businesses. So it was after the Aug. 9 death of Michael Brown in Ferguson."
 
 ### East
 
@@ -58,6 +68,8 @@ maryland
   - bldg work exceeding 50K
   - minor privilege permits (minor public space encroachment)
 
+> "despite its proximity to the nation’s capital in Washington, D.C., Baltimore, Maryland has been the center of economic despair and urban blight since riots rolled through the city a day after Dr. Martin Luther King Jr. was assassinated in 1968. So great are the problems in modern-day Baltimore, that the city’s Black Police Commissioner Anthony Batts said in March that issues essentially 'go back in time.' 'When I go to Baltimore, on the East Coast, I’m dealing with 1950s-level black-and-white racism,' Police Commissioner Anthony Batts said, according to the Sun. 'It’s taken a step back. Everything’s either black or everything’s white, and we’re dealing with that as a community.'”
+
 massachusetts
 - somerville (boston suburb)
 - boston
@@ -65,6 +77,8 @@ massachusetts
   - public works, transportation, fire
   - asbestos removal
   - alcohol licenses
+
+> sprawl: "If all of Boston's urbanization were a single urban area, it would be the third most expansive in the world [behind New York and Tokyo]... The core city of Boston is among the most dense in the United States, with a 2014 density of 13,300 per square mile (5,200 per square kilometer). It is also very successful, having experienced a strong population turnaround, after falling from 801,000 residents in 1950 to 562,000 in 1980 (a 30% loss). By 2014, the city had recovered nearly 40% of its former population, rising to 656,000."
 
 new york
 - nyc
