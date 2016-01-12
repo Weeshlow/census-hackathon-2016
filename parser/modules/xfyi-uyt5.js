@@ -321,15 +321,15 @@
 (function() {
     'use strict';
 
-    var LAT_COL = 19;
-    var LON_COL = 20;   
-    var DESC_COL = 4; 
-    var STAT_COL = 11; 
-    var EXP_DATE = 9; 
-    var ISS_DATE = 8; 
-    var STAT_DATE = 10; 
-    var TYPE_DESC = 6; 
-    var SUBTYPE_DESC = 7; 
+    var LAT_COL = 25;
+    var LON_COL = 26;   
+    var DESC_COL = 10; 
+    var STAT_COL = 17; 
+    var EXP_DATE = 15; 
+    var ISS_DATE = 14; 
+    var STAT_DATE = 16; 
+    var TYPE_DESC = 12; 
+    var SUBTYPE_DESC = 13; 
 
 
     module.exports = function(id) {
@@ -346,7 +346,7 @@
             latitude: function (arr) {
                 return arr[LAT_COL]; 
             },
-            latitude: function (arr) {
+            longitude: function (arr) {
                 return arr[LON_COL]; 
             },
             units: function() {
