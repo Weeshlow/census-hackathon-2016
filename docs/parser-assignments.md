@@ -2,8 +2,8 @@
 
 ## similar data, with lat lons
 ```
-24uj-dj8v.json - Kevin
-2hre-tvqe.json - Kevin
+24uj-dj8v.json - Kevin - DONE
+2hre-tvqe.json - Kevin - DONE
 47eb-r92t.json - Kevin
 bwg6-98m2.json - Kevin
 f74k-9nzv.json - Kevin
