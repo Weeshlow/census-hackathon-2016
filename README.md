@@ -30,15 +30,25 @@ A quick easy read of the building permit data.
 ### West
 
 washington state
-- seattle
 - colfax 2015+ (32 permits)
 
 > colfax: population 2,805 as of the [2010 census](https://en.wikipedia.org/wiki/Colfax,_Washington)
 
 > <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/ThreshingbeeColfaxWA.jpg/700px-ThreshingbeeColfaxWA.jpg" height="200">
 
+- seattle
+
+> "Seattle is a major port city that has a history of boom and bust.... most recently, the boom based on Microsoft and other software, web, and telecommunications companies, such as Amazon.com, AT&T Wireless, and RealNetworks.... also... Starbucks.... Nordstrom....".
+
+> <img src="https://dl.dropboxusercontent.com/u/705531/seattle.png" height="200"> [trulia.com](http://www.trulia.com/home_prices/Washington/Seattle-heat_map/)
+
 california
 - san francisco 2012+ (snapshots)
+
+> "Those coming into the city are usually shocked at the prices and limited availability of housing in the city.... Anyone visiting the city cannot help but notice the large number of people with shopping carts on the street."
+
+> <img src="https://dl.dropboxusercontent.com/u/705531/sf.png" height="200"> [trulia.com](http://www.trulia.com/home_prices/California/San_Francisco-heat_map/)
+
 
 ### Central
 
