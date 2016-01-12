@@ -9,8 +9,8 @@ bwg6-98m2.json - Kevin - DONE - no type, units, status, timestamp, amount
 f74k-9nzv.json - Kevin - DONE - no type, units, status
 k6m8-62kn.json - Chris
 m88u-pqki.json - Chris
-mags-97de.json - Chris
-msk6-43c6.json - Kevin
+mags-97de.json - Kevin
+msk6-43c6.json - Kevin - DONE - no units, status
 stav-rdug.json - Scott - DONE - no type, units, status
 vcj3-ncb3.json - Scott
 ydr8-5enu.json - Scott
