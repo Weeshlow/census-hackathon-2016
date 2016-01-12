@@ -312,12 +312,18 @@
             id: () => id,
             type: (arr) => arr[TYPE_COL],
             status: () =>  null,
-            latitude: (arr) => arr[LOC_COL][LOC_LAT_COL],
-            longitude: (arr) => arr[LOC_COL][LOC_LON_COL],
+            latitude: (arr) => {
+              return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LAT_COL] : null;
+            },
+            longitude: (arr) => {
+              return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LON_COL] : null;
+            },
             units: (arr) => arr[UNITS_COL],
             timestamp: (arr) => arr[YEAR_COL] + '-' + arr[MONTH_COL] + '-' + arr[DAY_COL] + 'T00:00:00',  // ISO datetime string
             description: (arr) => arr[TYPE_COL] + ': ' + arr[DESC_COL],
-            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
+            amount: (arr) => {
+              return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+            }
         };
     };
 

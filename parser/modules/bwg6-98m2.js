@@ -97,11 +97,17 @@
             id: () => id,
             type: () => null,
             status: () => null,
-            latitude: (arr) => arr[LAT_COL][4],
-            longitude: (arr) => arr[LON_COL][5],
+            latitude: (arr) => {
+              return arr[LAT_COL] !== null ? arr[LAT_COL][4] : null;
+            },
+            longitude: (arr) => {
+              return arr[LON_COL] !== null ? arr[LON_COL][5] : null;
+            },
             units: () => null,
             timestamp: () => null,
-            description: (arr) => arr[DESC_COL].trim(),
+            description: (arr) => {
+              return arr[DESC_COL] !== null ? arr[DESC_COL].trim() : null;
+            },
             amount: () => null,
         };
     };

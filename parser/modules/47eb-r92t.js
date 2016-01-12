@@ -308,7 +308,9 @@
             units: () => null,
             timestamp: (arr) => arr[DATE_COL],
             description: (arr) => arr[DESC_COL],
-            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER,
+            amount: (arr) => {
+              return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+            }
         };
     };
 

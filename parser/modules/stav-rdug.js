@@ -116,12 +116,18 @@
             id: () => id,
             type: () => null,
             status: () => null,
-            latitude: (arr) => arr[LOC_COL][LOC_LAT_COL],
-            longitude: (arr) => arr[LOC_COL][LOC_LON_COL],
+            latitude: (arr) => {
+              return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LAT_COL] : null;
+            },
+            longitude: (arr) => {
+              return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LON_COL] : null;
+            },
             units: () => null,
             timestamp: (arr) => arr[DATE_COL],  // ISO datetime string
             description: (arr) => arr[DESC_COL],
-            amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
+            amount: (arr) => {
+              return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+            }
         };
     };
 
