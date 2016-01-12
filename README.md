@@ -24,7 +24,9 @@ The information would improve the quality and cost-effectiveness of operations i
 The pilot offers opportunities to collaborate with government and private organizations.  Information could be shared with planners, policy makers, and analysts in state and local governments, other Departments, and private organizations.  HUD’s Office of Deputy Assistant Secretary for Economic Affairs (ODAS/EA) interest in permits and **Low Income Housing** Tax Credits (LIHTC), and the Housing and Demographic Analysis Division (also under ODAS/EA) is interested in **green buildings** and **disability accessibility** that could be gleaned from text on permits.  We anticipate interest from DOT, USGS, Interior, and other Departments.  Through the pilot, we could engage with the Institute for Building Technology and Safety (IBTS), an organization that aids local governments on building code compliance, to develop a standard set of reporting formats.  The IBTS may also support our communication efforts and encourage jurisdictions to participate. 
 
 ## Building Permit Data Sets
-A quick easy read of the building permit data.
+A quick easy read of the building permit data
+
+> ...with a sampling of notes about possibly interesting socio-economic characteristics of those areas
 
 
 ### West
@@ -38,14 +40,14 @@ washington state
 
 - seattle
 
-> "Seattle is a major port city that has a history of boom and bust.... most recently, the boom based on Microsoft and other software, web, and telecommunications companies, such as Amazon.com, AT&T Wireless, and RealNetworks.... also... Starbucks.... Nordstrom....".
+> "Seattle is a major port city that has a history of boom and bust.... most recently, the **boom** based on Microsoft and other software, web, and telecommunications companies, such as Amazon.com, AT&T Wireless, and RealNetworks.... also... Starbucks.... Nordstrom....".
 
 > <img src="https://dl.dropboxusercontent.com/u/705531/seattle.png" height="200"> [trulia.com](http://www.trulia.com/home_prices/Washington/Seattle-heat_map/)
 
 california
 - san francisco 2012+ (snapshots)
 
-> "Those coming into the city are usually shocked at the prices and limited availability of housing in the city.... Anyone visiting the city cannot help but notice the large number of people with shopping carts on the street."
+> "Those coming into the city are usually shocked at the **prices** and **limited availability** of housing in the city.... Anyone visiting the city cannot help but notice the large number of people with shopping carts on the street."
 
 > <img src="https://dl.dropboxusercontent.com/u/705531/sf.png" height="200"> [trulia.com](http://www.trulia.com/home_prices/California/San_Francisco-heat_map/)
 
@@ -78,7 +80,8 @@ maryland
   - bldg work exceeding 50K
   - minor privilege permits (minor public space encroachment)
 
-> "despite its proximity to the nation’s capital in Washington, D.C., Baltimore, Maryland has been the center of economic despair and urban blight since riots rolled through the city a day after Dr. Martin Luther King Jr. was assassinated in 1968. So great are the problems in modern-day Baltimore, that the city’s Black Police Commissioner Anthony Batts said in March that issues essentially 'go back in time.' 'When I go to Baltimore, on the East Coast, I’m dealing with 1950s-level black-and-white racism,' Police Commissioner Anthony Batts said, according to the Sun. 'It’s taken a step back. Everything’s either black or everything’s white, and we’re dealing with that as a community.'”
+> "despite its proximity to the nation’s capital in Washington, D.C., Baltimore, Maryland has been the center of economic despair and **urban blight** since riots rolled through the city a day after Dr. Martin Luther King Jr. was assassinated in 1968. So great are the problems in modern-day Baltimore, that the city’s Black Police Commissioner Anthony Batts said in March that issues essentially 'go back in time.' 'When I go to Baltimore, on the East Coast, I’m dealing with 1950s-level black-and-white racism,' Police Commissioner Anthony Batts said, according to the Sun. 'It’s taken a step back. Everything’s either black or everything’s white, and we’re dealing with that as a community.'”
+
 
 massachusetts
 - somerville (boston suburb)
