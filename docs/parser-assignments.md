@@ -6,13 +6,13 @@
 2hre-tvqe.json - Kevin - DONE - no units
 47eb-r92t.json - Kevin - DONE - no units
 bwg6-98m2.json - Kevin - DONE - no type, units, status, timestamp, amount
-f74k-9nzv.json - Kevin
+f74k-9nzv.json - Kevin - DONE - no type, units, status
 k6m8-62kn.json - Chris
 m88u-pqki.json - Chris
 mags-97de.json - Chris
 msk6-43c6.json - Chris
 stav-rdug.json - Scott - DONE - no type, units, status
-vcj3-ncb3.json - Scott - DONE - no status
+vcj3-ncb3.json - Scott
 ydr8-5enu.json - Scott
 rcm3-fn58.json - Scott
 ```
