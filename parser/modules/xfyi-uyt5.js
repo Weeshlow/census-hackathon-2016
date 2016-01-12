@@ -73,7 +73,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256900,
         "width" : 109,
-        
+
       }, {
         "id" : 75767557,
         "name" : "License_Permit_Holder",
@@ -83,7 +83,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256901,
         "width" : 271,
-        
+
       }, {
         "id" : 75767558,
         "name" : "Business_Description",
@@ -93,7 +93,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256902,
         "width" : 303,
-        
+
       }, {
         "id" : 75767559,
         "name" : "License/Permit_Number",
@@ -103,7 +103,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256903,
         "width" : 187,
-        
+
       }, {
         "id" : 75767560,
         "name" : "Permit_Type_Description",
@@ -113,7 +113,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256904,
         "width" : 249,
-        
+
       }, {
         "id" : 75767561,
         "name" : "Permit_Subtype_Description",
@@ -168,7 +168,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256910,
         "width" : 110,
-        
+
       }, {
         "id" : 75767567,
         "name" : "Street",
@@ -178,7 +178,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256911,
         "width" : 172,
-        
+
       }, {
         "id" : 75767568,
         "name" : "City",
@@ -188,7 +188,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256912,
         "width" : 128,
-        
+
       }, {
         "id" : 75767569,
         "name" : "Zip_Code",
@@ -198,7 +198,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256913,
         "width" : 104,
-        
+
       }, {
         "id" : 75767570,
         "name" : "Borough",
@@ -208,7 +208,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256914,
         "width" : 107,
-        
+
       }, {
         "id" : 75767571,
         "name" : "Building_ID_No",
@@ -218,7 +218,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256915,
         "width" : 152,
-        
+
       }, {
         "id" : 75767572,
         "name" : "Borough_Block_Lot",
@@ -228,7 +228,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256916,
         "width" : 166,
-        
+
       }, {
         "id" : 75767573,
         "name" : "Latitude_WGS84",
@@ -238,7 +238,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256917,
         "width" : 165,
-        
+
       }, {
         "id" : 75767574,
         "name" : "Longitude_WGS84",
@@ -248,7 +248,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256918,
         "width" : 165,
-        
+
       }, {
         "id" : 75767575,
         "name" : "License/Permit_Holder_Name",
@@ -258,7 +258,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256919,
         "width" : 264,
-        
+
       }, {
         "id" : 75767576,
         "name" : "DOB_Skilled_Trades_Lic_Num",
@@ -268,7 +268,7 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256920,
         "width" : 229,
-        
+
       }, {
         "id" : 75767577,
         "name" : "DOB_Skilled_Trades_Lic_Type",
@@ -278,18 +278,18 @@
         "renderTypeName" : "text",
         "tableColumnId" : 11256921,
         "width" : 246,
-        
+
       } ],
 
   */
 
 
 /*
-    SAMPLE ROW: 
+    SAMPLE ROW:
     {
       0: 1370997875,
       1: 461725,
-      2: "DOB Job Permit", 
+      2: "DOB Job Permit",
       3: "VAS & SONS CORP",
       4: null,
       5: "32010861902",
@@ -306,7 +306,7 @@
       16: "BROOKLYN",
       17: "3181615",
       18: "3067570042",
-      19: "40.614241", 
+      19: "40.614241",
       20: "-73.954631"
       21: null,
       22: "0600253"
@@ -321,66 +321,26 @@
 (function() {
     'use strict';
 
-    var LAT_COL = 19;
-    var LON_COL = 20;   
-    var DESC_COL = 4; 
-    var STAT_COL = 11; 
-    var EXP_DATE = 9; 
-    var ISS_DATE = 8; 
-    var STAT_DATE = 10; 
-    var TYPE_DESC = 6; 
-    var SUBTYPE_DESC = 7; 
+    const LAT_COL = 19;
+    const LON_COL = 20;
+    const DESC_COL = 4;
+    const STAT_COL = 11;
+    const ISS_DATE = 8;
+    const TYPE_DESC = 6;
+    const SUBTYPE_DESC = 7;
 
 
     module.exports = function(id) {
         return {
-            id: function() {
-                return id;
-            }, 
-            type: function (arr) {
-                return arr[TYPE_DESC] + ';' + arr[SUBTYPE_DESC];
-            },
-            status: function (arr) {
-                return arr[STAT_COL];
-            },
-            latitude: function (arr) {
-                return arr[LAT_COL]; 
-            },
-            latitude: function (arr) {
-                return arr[LON_COL]; 
-            },
-            units: function() {
-                return null; 
-            },
-            timestamp: function (arr) {
-                return arr[ISS_DATE]; 
-            },
-            description: function (arr) {
-                return arr[DESC_COL]; 
-            },
-            amount: function () {
-                return null;
-            }
+            id: () => id,
+            type: (arr) => arr[TYPE_DESC] + ';' + arr[SUBTYPE_DESC],
+            status: (arr) => arr[STAT_COL],
+            latitude: (arr) => arr[LAT_COL],
+            longitude: (arr) => arr[LON_COL],
+            units: () => null,
+            timestamp: (arr) => arr[ISS_DATE],
+            description: (arr) => arr[DESC_COL],
+            amount: () => null
         };
     };
-}()); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+}());
