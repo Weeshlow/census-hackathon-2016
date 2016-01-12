@@ -62,14 +62,14 @@ illinois
   - bldg
   - daley center plaza event permits
 
-> "A New York Times analysis of homicides and census data in Chicago compared areas near murders to those that were not. Residents living near homicides in the last 12 years were much more likely to be black, earn less money and lack a college degree."
+> **disparity**: "A New York Times analysis of homicides and census data in Chicago compared areas near murders to those that were not. Residents living near homicides in the last 12 years were much more likely to be black, earn less money and lack a college degree."
 
 > <img src="https://dl.dropboxusercontent.com/u/705531/chicago.png" height="200">
 
 missouri
 - 1970+
 
-> "Ferguson, which gets its name from a 19th-century farmer who donated a portion of his land for a railroad line and depot, is a suburb of St. Louis with just over 21,200 residents, 67 percent of whom are black. In 1970, the suburb was 99 percent white. For skeptics who wonder what that has to do with anything, racial makeup does make a difference, especially considering the spark that ignited such intense civil unrest came when an unarmed 18-year-old black youth was shot to death by a white police officer. It is a scenario that historically, over the last 50 years at least, has brought not just outrage but wholesale riots in cities across the country, accompanied by looting and burning of businesses. So it was after the Aug. 9 death of Michael Brown in Ferguson."
+> "Ferguson, which gets its name from a 19th-century farmer who donated a portion of his land for a railroad line and depot, is a suburb of St. Louis with just over 21,200 residents, 67 percent of whom are black. In 1970, the suburb was 99 percent white. For skeptics who wonder what that has to do with anything, **racial makeup** does make a difference, especially considering the spark that ignited such intense civil unrest came when an unarmed 18-year-old black youth was shot to death by a white police officer. It is a scenario that historically, over the last 50 years at least, has brought not just outrage but wholesale riots in cities across the country, accompanied by looting and burning of businesses. So it was after the Aug. 9 death of Michael Brown in Ferguson."
 
 ### East
 
@@ -91,7 +91,7 @@ massachusetts
   - asbestos removal
   - alcohol licenses
 
-> sprawl: "If all of Boston's urbanization were a single urban area, it would be the third most expansive in the world [behind New York and Tokyo]... The core city of Boston is among the most dense in the United States, with a 2014 density of 13,300 per square mile (5,200 per square kilometer). It is also very successful, having experienced a strong population turnaround, after falling from 801,000 residents in 1950 to 562,000 in 1980 (a 30% loss). By 2014, the city had recovered nearly 40% of its former population, rising to 656,000."
+> **sprawl**: "If all of Boston's urbanization were a single urban area, it would be the third most expansive in the world [behind New York and Tokyo]... **urban renewal**: The core city of Boston is among the most dense in the United States, with a 2014 density of 13,300 per square mile (5,200 per square kilometer). It is also very successful, having experienced a strong population turnaround, after falling from 801,000 residents in 1950 to 562,000 in 1980 (a 30% loss). By 2014, the city had recovered nearly 40% of its former population, rising to 656,000."
 
 new york
 - nyc
