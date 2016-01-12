@@ -130,10 +130,10 @@
     module.exports = function(id) {
         return {
             id: () => id,
-            type: () => arr[TYPE_COL],
+            type: (arr) => arr[TYPE_COL],
             status: () => null,
-            latitude: (arr) => null,
-            longitude: (arr) => null,
+            latitude: () => null,
+            longitude: () => null,
             units: () => null,
             timestamp: (arr) => arr[DATE_COL],  // ISO datetime string
             description: (arr) => arr[DESC_COL],
