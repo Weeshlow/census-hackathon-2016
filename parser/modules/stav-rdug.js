@@ -117,10 +117,10 @@
       type: () => null,
       status: () => null,
       latitude: (arr) => {
-        return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LAT_COL] : null;
+        return arr[LOC_COL] !== null ? parseFloat(arr[LOC_COL][LOC_LAT_COL]) : null;
       },
       longitude: (arr) => {
-        return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LON_COL] : null;
+        return arr[LOC_COL] !== null ? parseFloat(arr[LOC_COL][LOC_LON_COL]) : null;
       },
       units: () => null,
       timestamp: (arr) => arr[DATE_COL], // ISO datetime string

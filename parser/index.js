@@ -6,6 +6,7 @@ const path = require('path');
 
 const OUTPUT_DIR = 'output';
 const MAX_TEST_LINES = 10;
+const DELIMITER = ',';
 
 let dataRe = /\"data\"\s?:\s?\[/;
 
@@ -58,7 +59,7 @@ function processRecord(file, line) {
       }
       values.push(field);
     }
-    outputStreams[file].write(values.join(',') + '\n');
+    outputStreams[file].write(values.join(DELIMITER) + '\n');
   } catch (lineerr) {
     console.error(`error while processing line from ${file}\n${line}\n${lineerr}`);
     // skip record
@@ -87,7 +88,7 @@ fs.readdir(process.argv[2], function(err, files) {
       counts[f] = 0;
 
       // write out column names to CSV
-      let columnNames = Object.keys(modules[f]).map(c => `"${c}"`).join(',');
+      let columnNames = Object.keys(modules[f]).map(c => `"${c}"`).join(DELIMITER);
       outputStreams[f].write(columnNames + '\n');
 
       // create a new string buffer for this file

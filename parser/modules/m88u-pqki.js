@@ -173,8 +173,8 @@ Sample record:
       id: () => id,
       type: (arr) => arr[TYPE_COL],
       status: () => null,
-      latitude: (arr) => arr[LOC_COL] ? arr[LOC_COL][1] : null,
-      longitude: (arr) => arr[LOC_COL] ? arr[LOC_COL][2] : null,
+      latitude: (arr) => arr[LOC_COL] ? parseFloat(arr[LOC_COL][1]) : null,
+      longitude: (arr) => arr[LOC_COL] ? parseFloat(arr[LOC_COL][2]) : null,
       units: () => null,
       timestamp: (arr) => arr[DATE_COL],
       description: (arr) => {
