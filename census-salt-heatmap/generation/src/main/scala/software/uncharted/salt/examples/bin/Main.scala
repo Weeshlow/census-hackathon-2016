@@ -1,4 +1,4 @@
-package software.uncharted.censushackathon2016s
+package software.uncharted.censushackathon2016
 
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
@@ -8,7 +8,7 @@ import org.apache.spark.sql.Row
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
 
-import software.uncharted.salt.core.generation.request._
+import software.uncharted.salt.core.generation.request.TileLevelRequest
 import software.uncharted.salt.core.generation.mapreduce.MapReduceTileGenerator
 
 object Main {
@@ -32,8 +32,8 @@ object Main {
         "com.databricks.spark.csv",
         Map("inferSchema" -> "true", "header" -> "true"))
       )
-      .to(ops.core.dataframe.castColumns(Map("latitude" -> "double", "longitude" -> "double")))
-      .to(_.select("longitude", "latitude"))
+      .to(ops.core.dataframe.castColumns(Map("latitude" -> "double", "longitude" -> "double", "amount" -> "double")))
+      .to(_.select("longitude", "latitude", "amount"))
       .to(ops.core.dataframe.cache)
       .to(ops.core.dataframe.toRDD)
       .to(sourceData => {
@@ -43,7 +43,7 @@ object Main {
 
         // Break levels into batches. Process several higher levels at once because the
         // number of tile outputs is quite low. Lower levels done individually due to high tile counts.
-        val levelBatches = List(List(0, 1, 2, 3, 4, 5, 6, 7, 8), List(9, 10, 11), List(12), List(13))
+        val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10), Range(10, 12), List(12))
 
         // Iterate over sets of levels to generate.
         Pipe(levelBatches)
@@ -53,10 +53,18 @@ object Main {
           println(s"Generating level $level")
           println("------------------------------")
 
+          val permits = new PermitsHeatMap(level)
+          val amounts = new CumulativeAmountsHeatMap(level)
+
           // Create a request for all tiles on these levels, generate
           val request = new TileLevelRequest(level, (coord: (Int, Int, Int)) => coord._1)
-          val tiles = gen.generate(sourceData, PermitsHeatMap.series(level), request)
-          PermitsHeatMap.output(level, tiles, outputPath)
+          val tiles = gen.generate(
+            sourceData,
+            Seq(permits.series, amounts.series),
+            request
+          )
+          permits.output(level, tiles, outputPath)
+          amounts.output(level, tiles, outputPath)
         }))
         .run;
 
