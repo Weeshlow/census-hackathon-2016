@@ -16,3 +16,9 @@ You can run the script in test mode (against 10 lines of each source file) via:
 ```bash
 $ npm test [path/to/raw-data/dir]
 ```
+
+You can debug via:
+
+```bash
+$ npm run debug [path/to/raw-data-/dir]
+```
