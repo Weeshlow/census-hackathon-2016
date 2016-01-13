@@ -303,8 +303,6 @@
   const STATUS_COL = 24;
   const APPLICANT_COL = 14;
 
-
-
   module.exports = function(id) {
     const d = require('../demographics.js');
 

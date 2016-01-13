@@ -321,7 +321,6 @@
         }
         let tokens = arr[APPLICANT_COL].split(',');
         let surname = tokens[0].trim().toUpperCase();
-        console.log(d(surname));
         return d(surname) !== undefined ? d(surname)[0] : null;
       },
       applicantRaceProb: (arr) => {
