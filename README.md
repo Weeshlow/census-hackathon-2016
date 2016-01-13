@@ -93,6 +93,8 @@ massachusetts
 
 > **sprawl**: "If all of Boston's urbanization were a single urban area, it would be the third most expansive in the world [behind New York and Tokyo]... **urban renewal**: The core city of Boston is among the most dense in the United States, with a 2014 density of 13,300 per square mile (5,200 per square kilometer). It is also very successful, having experienced a strong population turnaround, after falling from 801,000 residents in 1950 to 562,000 in 1980 (a 30% loss). By 2014, the city had recovered nearly 40% of its former population, rising to 656,000."
 
+> <img src="https://dl.dropboxusercontent.com/u/705531/boston.png" height="200"> [trulia.com](http://www.trulia.com/real_estate/Boston-Massachusetts/)
+
 new york
 - nyc
   - bldg
