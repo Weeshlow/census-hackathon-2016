@@ -139,7 +139,9 @@
       description: (arr) => arr[DESC_COL],
       amount: (arr) => {
         return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
-      }
+      },
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 

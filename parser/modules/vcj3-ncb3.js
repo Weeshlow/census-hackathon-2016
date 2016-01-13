@@ -306,8 +306,11 @@
   const UNITS_COL = 19;
   const DESC_COL = 25;
   const AMOUNT_COL = 20;
+  const APPLICANT_COL = 34;
 
   module.exports = function(id) {
+    const d = require('../demographics.js');
+
     return {
       id: () => id,
       type: (arr) => arr[TYPE_COL],
@@ -323,6 +326,22 @@
       description: (arr) => arr[TYPE_COL] + ': ' + arr[DESC_COL],
       amount: (arr) => {
         return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
+      },
+      applicantRace: (arr) => {
+        if (arr[APPLICANT_COL] === null) {
+          return null;
+        }
+        let tokens = arr[APPLICANT_COL].split(' ');
+        let surname = tokens[tokens.length-1].trim().toUpperCase();
+        return d(surname) !== undefined ? d(surname)[0] : null;
+      },
+      applicantRaceProb: (arr) => {
+        if (arr[APPLICANT_COL] === null) {
+          return null;
+        }
+        let tokens = arr[APPLICANT_COL].trim().split(' ');
+        let surname = tokens[tokens.length-1].toUpperCase();
+        return d(surname) !== undefined ? d(surname)[1] : null;
       }
     };
   };

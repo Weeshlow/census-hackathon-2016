@@ -184,7 +184,9 @@ Sample record:
         if (arr[DESC_COL_ARR]) { result.push(arr[DESC_COL_ARR][2]); }
         return arr[TYPE_COL] + ': ' + result.join(' ');
       },
-      amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
+      amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER,
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 }());

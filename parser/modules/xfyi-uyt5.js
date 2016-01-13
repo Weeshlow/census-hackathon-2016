@@ -294,7 +294,9 @@
         }
       },
       description: (arr) => arr[DESC_COL],
-      amount: () => null
+      amount: () => null,
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 }());

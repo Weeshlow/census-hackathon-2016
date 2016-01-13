@@ -108,7 +108,9 @@
               units: (/* arr */) => null,
               timestamp: (arr) => arr[DATE_COL],
               description: (arr) => arr[USE_DESC_COL] + ': ' + arr[TYPE_COL] + ',' + arr[DESC_COL],
-              amount: (arr) => CENTS_MULTIPLIER * arr[AMOUNT_COL]
+              amount: (arr) => CENTS_MULTIPLIER * arr[AMOUNT_COL],
+              applicantRace: () => null,
+              applicantRaceProb: () => null
           };
       };
   }());

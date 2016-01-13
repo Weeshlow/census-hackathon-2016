@@ -345,7 +345,9 @@
       units: () => null,
       timestamp: (arr) => arr[DATE_COL],
       description: (arr) => arr[DESC_COL],
-      amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER
+      amount: (arr) => arr[AMOUNT_COL] * CENTS_MULTIPLIER,
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 

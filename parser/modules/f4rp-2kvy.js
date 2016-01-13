@@ -219,7 +219,9 @@
       units: () => null,
       timestamp: (arr) => arr[DATE_COL], // ISO datetime string
       description: (arr) => arr[DESC1_COL] + ': ' + arr[DESC2_COL],
-      amount: () => null
+      amount: () => null,
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 

@@ -210,34 +210,28 @@
   module.exports = function(id) {
     return {
       id: () => id,
-
       type: (arr) => {
         return arr[TYP_COL];
       },
-
       status: (arr) => {
         return arr[STA_COL];
       },
-
       latitude: (arr) => {
         return parseFloat(arr[LAT_COL]);
       },
-
       longitude: (arr) => {
         return parseFloat(arr[LON_COL]);
       },
-
       units: () => null,
-
       timestamp: (arr) => {
         return arr[ISD_COL];
       },
-
       description: (arr) => {
         return arr[DSP_COL];
       },
-
-      amount: (arr) => arr[AMT_COL] * CENTS_MULTIPLIER
+      amount: (arr) => arr[AMT_COL] * CENTS_MULTIPLIER,
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 }());

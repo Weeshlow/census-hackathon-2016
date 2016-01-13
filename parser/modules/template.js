@@ -79,7 +79,9 @@
       units: ( /* arr */ ) => null,
       timestamp: ( /* arr */ ) => null, // ISO Date format!
       description: ( /* arr */ ) => null,
-      amount: ( /* arr */ ) => null // Use Cents!
+      amount: ( /* arr */ ) => null, // Use Cents!
+      applicantRace: ( /* arr */ ) => null,
+      applicantRaceProb: ( /* arr */ ) => null
     };
   };
 

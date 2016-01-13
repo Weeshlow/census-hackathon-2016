@@ -274,7 +274,9 @@
       description: (arr) => arr[LEGAL_DESC_COL] + ': ' + arr[JOB_DESC_COL],
       amount: (arr) => {
         return arr[AMOUNT_COL] !== null ? arr[AMOUNT_COL] * CENTS_MULTIPLIER : null;
-      }
+      },
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 

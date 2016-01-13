@@ -109,6 +109,8 @@
         return arr[DESC_COL] !== null ? arr[DESC_COL].trim() : null;
       },
       amount: () => null,
+      applicantRace: () => null,
+      applicantRaceProb: () => null
     };
   };
 
