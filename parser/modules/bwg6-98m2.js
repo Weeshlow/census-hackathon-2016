@@ -98,10 +98,10 @@
       type: () => null,
       status: () => null,
       latitude: (arr) => {
-        return arr[LAT_COL] !== null ? arr[LAT_COL][1] : null;
+        return arr[LAT_COL] !== null ? parseFloat(arr[LAT_COL][1]) : null;
       },
       longitude: (arr) => {
-        return arr[LON_COL] !== null ? arr[LON_COL][2] : null;
+        return arr[LON_COL] !== null ? parseFloat(arr[LON_COL][2]) : null;
       },
       units: () => null,
       timestamp: () => null,

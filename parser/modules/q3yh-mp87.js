@@ -220,11 +220,11 @@
       },
 
       latitude: (arr) => {
-        return arr[LAT_COL];
+        return parseFloat(arr[LAT_COL]);
       },
 
       longitude: (arr) => {
-        return arr[LON_COL];
+        return parseFloat(arr[LON_COL]);
       },
 
       units: () => null,

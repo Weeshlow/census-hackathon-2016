@@ -313,10 +313,10 @@
       type: (arr) => arr[TYPE_COL],
       status: () => null,
       latitude: (arr) => {
-        return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LAT_COL] : null;
+        return arr[LOC_COL] !== null ? parseFloat(arr[LOC_COL][LOC_LAT_COL]) : null;
       },
       longitude: (arr) => {
-        return arr[LOC_COL] !== null ? arr[LOC_COL][LOC_LON_COL] : null;
+        return arr[LOC_COL] !== null ? parseFloat(arr[LOC_COL][LOC_LON_COL]) : null;
       },
       units: (arr) => arr[UNITS_COL],
       timestamp: (arr) => arr[YEAR_COL] + '-' + arr[MONTH_COL] + '-' + arr[DAY_COL] + 'T00:00:00', // ISO datetime string

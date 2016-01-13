@@ -275,8 +275,8 @@
         return arr[TYPE_DESC] + ((arr[SUBTYPE_DESC] !== null) ? (':' + arr[SUBTYPE_DESC]) : '');
       },
       status: (arr) => arr[STAT_COL],
-      latitude: (arr) => arr[LAT_COL],
-      longitude: (arr) => arr[LON_COL],
+      latitude: (arr) => parseFloat(arr[LAT_COL]),
+      longitude: (arr) => parseFloat(arr[LON_COL]),
       units: () => null,
       timestamp: (arr) => {
         if (arr[DATE_COL]) {
