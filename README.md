@@ -24,7 +24,7 @@ The information would improve the quality and cost-effectiveness of operations i
 The pilot offers opportunities to collaborate with government and private organizations.  Information could be shared with planners, policy makers, and analysts in state and local governments, other Departments, and private organizations.  HUD’s Office of Deputy Assistant Secretary for Economic Affairs (ODAS/EA) interest in permits and **Low Income Housing** Tax Credits (LIHTC), and the Housing and Demographic Analysis Division (also under ODAS/EA) is interested in **green buildings** and **disability accessibility** that could be gleaned from text on permits.  We anticipate interest from DOT, USGS, Interior, and other Departments.  Through the pilot, we could engage with the Institute for Building Technology and Safety (IBTS), an organization that aids local governments on building code compliance, to develop a standard set of reporting formats.  The IBTS may also support our communication efforts and encourage jurisdictions to participate. 
 
 ## Building Permit Data Sets
-A quick easy read of the building permit data
+A quick easy read of the [building permit data](https://xdataproxy.com/wiki/display/ODH/Jan+2016+Census+Bureau+Hackathon)
 
 > ...with a sampling of notes about possibly interesting socio-economic characteristics of those areas
 
