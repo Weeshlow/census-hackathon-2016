@@ -43,7 +43,7 @@ object Main {
 
         // Break levels into batches. Process several higher levels at once because the
         // number of tile outputs is quite low. Lower levels done individually due to high tile counts.
-        val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10), Range(10, 12), List(12))
+        val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10))
 
         // Iterate over sets of levels to generate.
         Pipe(levelBatches)
