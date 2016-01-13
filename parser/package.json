@@ -4,8 +4,8 @@
   "description": "Parses the census raw-data into CSV",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "TEST=true node index.js",
+    "start": "MAX_CHUNK_SIZE_BYTES=104857600 node index.js",
+    "test": "TEST=true MAX_CHUNK_SIZE_BYTES=104857600 node index.js",
     "fmt": "./node_modules/.bin/jsfmt -w ./modules/*.js"
   },
   "repository": {

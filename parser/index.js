@@ -7,9 +7,13 @@ const path = require('path');
 const OUTPUT_DIR = 'output';
 const MAX_TEST_LINES = 10;
 const DELIMITER = ',';
+const MAX_CHUNK_SIZE_BYTES = process.env["MAX_CHUNK_SIZE_BYTES"] ? Number(process.env["MAX_CHUNK_SIZE_BYTES"]) : 1024*1024*100;
 
 let dataRe = /\"data\"\s?:\s?\[/;
 
+const bytesWritten = {}; //the number of bytes written to an output file for a specific input dataset
+const chunkCounts = {}; // the current number of output files for a particular input dataset
+const columnNames = {}; // CSV column names for each dataset
 const modules = {};
 const buffs = {}; // buffers for each file
 const startedData = {}; // whether or not we've reached the actual data in each file
@@ -59,11 +63,49 @@ function processRecord(file, line) {
       }
       values.push(field);
     }
-    outputStreams[file].write(values.join(DELIMITER) + '\n');
+    writeToStream(values.join(DELIMITER) + '\n', file);
   } catch (lineerr) {
     console.error(`error while processing line from ${file}\n${line}\n${lineerr}`);
     // skip record
   }
+}
+
+
+// Create a new output stream for an input dataset file
+function openStream(f)  {
+  if (chunkCounts[f] === undefined) {
+    chunkCounts[f] = 0;
+  } else {
+    chunkCounts[f] = chunkCounts[f] + 1;
+  }
+
+  // end the previous stream if there was one
+  if (outputStreams[f] !== undefined) {
+    outputStreams[f].end();
+  }
+
+  // open output stream
+  const outputName = path.join(OUTPUT_DIR, f.substring(0, f.length-5) + '-' + chunkCounts[f] + '.csv');
+  outputStreams[f] = fs.createWriteStream(outputName);
+
+  // reset bytes written
+  bytesWritten[f] = 0;
+
+  // write out column names to CSV
+  if (!columnNames[f]) {
+    columnNames[f] = Object.keys(modules[f]).map(c => `"${c}"`).join(DELIMITER);
+  }
+
+  writeToStream(columnNames[f] + '\n', f);
+}
+
+// Write to the output stream for input file f. Handles chunking of output.
+function writeToStream(str, f)  {
+  if (bytesWritten[f] > MAX_CHUNK_SIZE_BYTES) {
+    openStream(f);
+  }
+  outputStreams[f].write(str);
+  bytesWritten[f] += Buffer.byteLength(str, 'utf8');
 }
 
 // read all the source files and kick off parsers for them
@@ -80,16 +122,11 @@ fs.readdir(process.argv[2], function(err, files) {
       modules[f] = require('./' + moduleName)(f);
       console.log(`Loaded parsing module for ${f}`);
 
-      // open output stream
-      const outputName = path.join(OUTPUT_DIR, f.substring(0, f.length-5) + '.csv');
-      outputStreams[f] = fs.createWriteStream(outputName);
+      // create an output stream
+      openStream(f);
 
       // start a line count
       counts[f] = 0;
-
-      // write out column names to CSV
-      let columnNames = Object.keys(modules[f]).map(c => `"${c}"`).join(DELIMITER);
-      outputStreams[f].write(columnNames + '\n');
 
       // create a new string buffer for this file
       buffs[f] = '';
