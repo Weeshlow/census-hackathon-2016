@@ -7,7 +7,7 @@ const path = require('path');
 const OUTPUT_DIR = 'output';
 const MAX_TEST_LINES = 10;
 const DELIMITER = ',';
-const MAX_CHUNK_SIZE_BYTES = process.env["MAX_CHUNK_SIZE_BYTES"] ? Number(process.env["MAX_CHUNK_SIZE_BYTES"]) : 1024*1024*100;
+const MAX_CHUNK_SIZE_BYTES = process.env['MAX_CHUNK_SIZE_BYTES'] ? Number(process.env['MAX_CHUNK_SIZE_BYTES']) : 1024*1024*100;
 
 let dataRe = /\"data\"\s?:\s?\[/;
 
