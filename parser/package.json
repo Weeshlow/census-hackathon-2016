@@ -6,6 +6,7 @@
   "scripts": {
     "start": "MAX_CHUNK_SIZE_BYTES=104857600 node index.js",
     "test": "TEST=true MAX_CHUNK_SIZE_BYTES=104857600 node index.js",
+    "debug": "TEST=true MAX_CHUNK_SIZE_BYTES=104857600 node-debug index.js",
     "fmt": "./node_modules/.bin/jsfmt -w ./modules/*.js"
   },
   "repository": {
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/unchartedsoftware/census-hackathon-2016#readme",
   "devDependencies": {
-    "jsfmt": "0.5.2"
+    "jsfmt": "0.5.2",
+    "node-inspector": "*"
   }
 }
