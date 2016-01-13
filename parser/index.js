@@ -148,7 +148,9 @@ fs.readdir(process.argv[2], function(err, files) {
         outputStreams[f].end();
       });
     } catch(err) {
-      // console.dir(err);
+      if (err.code  && err.code !== 'MODULE_NOT_FOUND') {
+        console.dir(err);
+      }
       console.error(`Cannot load parsing module for ${f}`);
     }
   }
