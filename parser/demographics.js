@@ -5,7 +5,7 @@
   let demographics = {};
   const races = ['white','black', 'native', 'asian', 'hawaiian', 'hispanic'];
 
-  let data = fs.readFileSync('../data/census-demographics.csv', 'utf8');
+  let data = fs.readFileSync('../resources/census-demographics.csv', 'utf8');
   data.split('\n').forEach(function(line) {
     let fields = line.split(',');
     let bestFit = 5;
