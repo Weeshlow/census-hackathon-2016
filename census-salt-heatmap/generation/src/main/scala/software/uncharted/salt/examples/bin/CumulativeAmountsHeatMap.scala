@@ -14,13 +14,13 @@ import software.uncharted.sparkpipe.ops
 import software.uncharted.salt.core.projection.numeric.MercatorProjection
 import software.uncharted.salt.core.generation.Series
 import software.uncharted.salt.core.generation.output.{Tile, SeriesData}
-import software.uncharted.salt.core.analytic.numeric.{CountAggregator, MinMaxAggregator}
+import software.uncharted.salt.core.analytic.numeric.{SumAggregator, MinMaxAggregator}
 
-class PermitsHeatMap(levels: Seq[Int]) extends Serializable {
+class CumulativeAmountsHeatMap(levels: Seq[Int]) extends Serializable {
   private val tileSize = 256;
 
   // Defines the output layer name
-  private val layerName = "permits"
+  private val layerName = "cumulative-amounts"
 
   // Given an input row, return permit longitude, latitude as a tuple
   private val permitExtractor = (r: Row) => {
@@ -31,11 +31,19 @@ class PermitsHeatMap(levels: Seq[Int]) extends Serializable {
     }
   }
 
+  private val amountExtractor = (r: Row) => {
+    if (r.isNullAt(2)) {
+      None
+    } else {
+      Some(r.getDouble(2))
+    }
+  }
+
   val series = new Series((tileSize - 1, tileSize - 1),
                           permitExtractor,
                           new MercatorProjection(levels),
-                          None,
-                          CountAggregator,
+                          Some(amountExtractor),
+                          SumAggregator,
                           Some(MinMaxAggregator))
 
   // extract our SeriesData from each tile and write it to the filesystem

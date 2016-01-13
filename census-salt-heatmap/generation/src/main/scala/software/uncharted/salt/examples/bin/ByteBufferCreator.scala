@@ -1,4 +1,4 @@
-package software.uncharted.censushackathon2016s
+package software.uncharted.censushackathon2016
 
 import software.uncharted.salt.core.generation.output.SeriesData
 
