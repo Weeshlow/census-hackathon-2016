@@ -4,8 +4,8 @@ import software.uncharted.salt.core.generation.output.SeriesData
 
 object ByteBufferCreator {
   // Creates and returns an Array of Double values encoded as 64bit Integers
-  def create(tile: SeriesData[(Int, Int, Int), Double, (Double, Double)], tileSize: Int): Array[Byte] = {
-    val byteArray = new Array[Byte](tileSize * tileSize * 8)
+  def create(tile: SeriesData[(Int, Int, Int), Double, (Double, Double)], bins: Int): Array[Byte] = {
+    val byteArray = new Array[Byte](bins * 8)
     var j = 0
     tile.bins.foreach(b => {
       val data = java.lang.Double.doubleToLongBits(b)

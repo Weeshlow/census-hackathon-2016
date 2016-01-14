@@ -5,6 +5,8 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.sql.Row
 
+import java.sql.Timestamp
+
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
 
@@ -38,9 +40,20 @@ object Main {
         "com.databricks.spark.csv",
         Map("inferSchema" -> "true", "header" -> "true"))
       )
-      .to(ops.core.dataframe.castColumns(Map("latitude" -> "double", "longitude" -> "double", "amount" -> "double")))
+      .to(ops.core.dataframe.castColumns(Map(
+        "latitude" -> "double",
+        "longitude" -> "double",
+        "amount" -> "double",
+        "timestamp" -> "timestamp"))
+      )
+      .to(ops.core.dataframe.replaceColumn("timestamp", (t: Timestamp) => {
+        if (t == null) None else Some(t.getTime())
+      }: Option[Long]))
+      .to(ops.core.dataframe.replaceColumn("amount", (a: java.lang.Double) => {
+        if (a == null) None else Some(a/100.0)
+      }: Option[Double]))
       .to(input => {
-        TileJob.run(input, levelBatches, outputter)
+        jobs.TileJob.run(input, levelBatches, outputter)
       })
       .run;
   }

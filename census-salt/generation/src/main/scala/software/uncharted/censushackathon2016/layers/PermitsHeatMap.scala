@@ -44,7 +44,7 @@ class PermitsHeatMap(levels: Seq[Int]) extends Serializable {
     seriesData
     .to(_.map(tile => {
       // Return tuples of tile coordinate, byte array
-      (tile.coords, ByteBufferCreator.create(tile, tileSize))
+      (tile.coords, ByteBufferCreator.create(tile, tileSize*tileSize))
     }))
     // .to(_.collect())
     .to(_.foreach(binTile => {

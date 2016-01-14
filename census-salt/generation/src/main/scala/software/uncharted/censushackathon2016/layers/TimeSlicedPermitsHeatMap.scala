@@ -4,45 +4,35 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, DataFrame}
 
-import software.uncharted.censushackathon2016.{TileOutput,ByteBufferCreator}
+import software.uncharted.censushackathon2016.{TileOutput,ByteBufferCreator,RangeDescription,MercatorTimeProjection}
 
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
 
-
 import software.uncharted.salt.core.projection.numeric.MercatorProjection
 import software.uncharted.salt.core.generation.Series
 import software.uncharted.salt.core.generation.output.{Tile, SeriesData}
-import software.uncharted.salt.core.analytic.numeric.{SumAggregator, MinMaxAggregator}
+import software.uncharted.salt.core.analytic.numeric.{CountAggregator, MinMaxAggregator}
 
-class CumulativeAmountsHeatMap(levels: Seq[Int]) extends Serializable {
+class TimeSlicedPermitsHeatMap(layerName: String, levels: Seq[Int], maxTime: Long, slices: Int, timeCol: Int) extends Serializable {
   private val tileSize = 256;
-
-  // Defines the output layer name
-  private val layerName = "cumulative-amounts"
 
   // Given an input row, return permit longitude, latitude as a tuple
   private val permitExtractor = (r: Row) => {
-    if (r.isNullAt(0) || r.isNullAt(1)) {
+    if (r.isNullAt(0) || r.isNullAt(1) || r.isNullAt(timeCol)) {
       None
     } else {
-      Some((r.getDouble(0), r.getDouble(1)))
+      Some((r.getDouble(0), r.getDouble(1), r.getLong(timeCol)))
     }
   }
 
-  private val amountExtractor = (r: Row) => {
-    if (r.isNullAt(2)) {
-      None
-    } else {
-      Some(r.getDouble(2))
-    }
-  }
+  val projection = new MercatorTimeProjection(levels, RangeDescription.fromCount(0, maxTime, slices))
 
-  val series = new Series((tileSize - 1, tileSize - 1),
+  val series = new Series((tileSize - 1, tileSize - 1, slices - 1),
                           permitExtractor,
-                          new MercatorProjection(levels),
-                          Some(amountExtractor),
-                          SumAggregator,
+                          projection,
+                          None,
+                          CountAggregator,
                           Some(MinMaxAggregator))
 
   // extract our SeriesData from each tile and write it out
@@ -53,7 +43,7 @@ class CumulativeAmountsHeatMap(levels: Seq[Int]) extends Serializable {
     seriesData
     .to(_.map(tile => {
       // Return tuples of tile coordinate, byte array
-      (tile.coords, ByteBufferCreator.create(tile, tileSize*tileSize))
+      (tile.coords, ByteBufferCreator.create(tile, tileSize*tileSize*slices))
     }))
     // .to(_.collect())
     .to(_.foreach(binTile => {

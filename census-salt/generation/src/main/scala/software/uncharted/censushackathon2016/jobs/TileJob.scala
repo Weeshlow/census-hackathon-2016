@@ -1,9 +1,11 @@
-package software.uncharted.censushackathon2016
+package software.uncharted.censushackathon2016.jobs
 
 import org.apache.spark.sql.{DataFrame, SQLContext, Row}
 
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
+
+import software.uncharted.censushackathon2016.{layers, TileOutput}
 
 import software.uncharted.salt.core.generation.request.TileLevelRequest
 import software.uncharted.salt.core.generation.mapreduce.MapReduceTileGenerator
