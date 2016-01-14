@@ -16,7 +16,7 @@ import software.uncharted.salt.core.generation.Series
 import software.uncharted.salt.core.generation.output.{Tile, SeriesData}
 import software.uncharted.salt.core.analytic.collection.TopElementsAggregator
 
-class DescriptionWordCloud(levels: Seq[Int]) extends Serializable {
+class WordCloud(levels: Seq[Int], termColumnIndex: Int) extends Serializable {
   // Defines the output layer name
   private val layerName = "description-word-cloud"
 
@@ -30,10 +30,10 @@ class DescriptionWordCloud(levels: Seq[Int]) extends Serializable {
   }
 
   private val termExtractor = (r: Row) => {
-    if (r.isNullAt(3)) {
+    if (r.isNullAt(termColumnIndex)) {
       None
     } else {
-      Some(r.getList(3).asInstanceOf[Seq[String]])
+      Some(Seq(r.getString(termColumnIndex)))
     }
   }
 

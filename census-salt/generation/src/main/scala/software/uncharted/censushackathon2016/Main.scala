@@ -33,7 +33,7 @@ object Main {
         Map("inferSchema" -> "true", "header" -> "true"))
       )
       .to(ops.core.dataframe.castColumns(Map("latitude" -> "double", "longitude" -> "double", "amount" -> "double")))
-      .to(_.select("longitude", "latitude", "amount"))
+      .to(_.select("longitude", "latitude", "amount", "type"))
       .to(ops.core.dataframe.cache)
       .to(ops.core.dataframe.toRDD)
       .to(sourceData => {
@@ -43,7 +43,7 @@ object Main {
 
         // Break levels into batches. Process several higher levels at once because the
         // number of tile outputs is quite low. Lower levels done individually due to high tile counts.
-        val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10))
+        val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10), List(10), List(11))
 
         // Iterate over sets of levels to generate.
         Pipe(levelBatches)
@@ -55,16 +55,18 @@ object Main {
 
           val permits = new PermitsHeatMap(level)
           val amounts = new CumulativeAmountsHeatMap(level)
+          val types = new WordCloud(level, 3)
 
           // Create a request for all tiles on these levels, generate
           val request = new TileLevelRequest(level, (coord: (Int, Int, Int)) => coord._1)
           val tiles = gen.generate(
             sourceData,
-            Seq(permits.series, amounts.series),
+            Seq(permits.series, amounts.series, types.series),
             request
           )
           permits.output(level, tiles, outputPath)
           amounts.output(level, tiles, outputPath)
+          types.output(level, tiles, outputPath)
         }))
         .run;
 
