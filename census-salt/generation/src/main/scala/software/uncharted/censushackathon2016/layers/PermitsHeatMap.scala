@@ -4,7 +4,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, DataFrame}
 
-import software.uncharted.censushackathon2016.{TileOutput,ByteBufferCreator}
+import software.uncharted.censushackathon2016.{OutputterFactory,ByteBufferCreator}
 
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
@@ -37,7 +37,7 @@ class PermitsHeatMap(levels: Seq[Int]) extends Serializable {
                           Some(MinMaxAggregator))
 
   // extract our SeriesData from each tile and write it out
-  def serialize(level: Seq[Int], tiles: RDD[Tile[(Int, Int, Int)]], outputter: TileOutput) = {
+  def serialize(level: Seq[Int], tiles: RDD[Tile[(Int, Int, Int)]], outputterFactory: OutputterFactory) = {
     val seriesData = Pipe(tiles)
                      .to(_.map(series(_)))
 
@@ -47,17 +47,20 @@ class PermitsHeatMap(levels: Seq[Int]) extends Serializable {
       (tile.coords, ByteBufferCreator.create(tile, tileSize*tileSize))
     }))
     // .to(_.collect())
-    .to(_.foreach(binTile => {
-      // Save byte files to local filesystem
-      val coord = binTile._1
-      val byteArray = binTile._2
-      val limit = (1 << coord._1) - 1
+    .to(_.foreachPartition(p =>  {
+      val outputter = outputterFactory.get()
+      p.foreach(binTile => {
+        // Save byte files to local filesystem
+        val coord = binTile._1
+        val byteArray = binTile._2
+        val limit = (1 << coord._1) - 1
 
-      outputter.output(
-        s"$layerName/${coord._1}/${coord._2}/${limit - coord._3}.bin", //TMS style
-        "application/json",
-        byteArray
-      )
+        outputter.output(
+          s"$layerName/${coord._1}/${coord._2}/${limit - coord._3}.bin", //TMS style
+          "application/json",
+          byteArray
+        )
+      })
     }))
     .run
   }

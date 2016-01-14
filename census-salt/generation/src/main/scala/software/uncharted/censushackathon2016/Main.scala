@@ -31,7 +31,7 @@ object Main {
     // number of tile outputs is quite low. Lower levels done individually due to high tile counts.
     val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10), List(10), List(11))
 
-    val outputter = new FileSystemWriter(outputPath)
+    val outputter = new FileSystemWriterFactory(outputPath)
 
     // Construct an RDD of Rows containing only the fields we need. Cache the result
     val input = Pipe(sqlContext)

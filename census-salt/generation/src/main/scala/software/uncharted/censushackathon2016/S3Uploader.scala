@@ -13,7 +13,13 @@ import com.amazonaws.services.s3.model.Permission
 import com.amazonaws.services.s3.model.AccessControlList
 
 
-class S3Uploader(accessKey: String, secretKey: String, bucket: String, keyPrefix: String) extends TileOutput {
+class S3UploaderFactory(accessKey: String, secretKey: String, bucket: String, keyPrefix: String) extends OutputterFactory {
+  override def get: S3Uploader = {
+    return new S3Uploader(accessKey, secretKey, bucket, keyPrefix)
+  }
+}
+
+class S3Uploader(accessKey: String, secretKey: String, bucket: String, keyPrefix: String) extends Outputter {
 
   val credentials = new BasicAWSCredentials(accessKey, secretKey);
   val s3client = new AmazonS3Client(credentials);

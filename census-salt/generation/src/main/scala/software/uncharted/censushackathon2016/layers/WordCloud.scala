@@ -6,7 +6,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, DataFrame}
 
-import software.uncharted.censushackathon2016.{TileOutput,ByteBufferCreator}
+import software.uncharted.censushackathon2016.{OutputterFactory,ByteBufferCreator}
 
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
@@ -50,7 +50,7 @@ class WordCloud(layerName: String, levels: Seq[Int], termColumnIndex: Int) exten
                           None)
 
   // extract our SeriesData from each tile and write it out
-  def serialize(level: Seq[Int], tiles: RDD[Tile[(Int, Int, Int)]], outputter: TileOutput) = {
+  def serialize(level: Seq[Int], tiles: RDD[Tile[(Int, Int, Int)]], outputterFactory: OutputterFactory) = {
     val seriesData = Pipe(tiles)
                      .to(_.map(series(_)))
     // seriesData
@@ -59,20 +59,23 @@ class WordCloud(layerName: String, levels: Seq[Int], termColumnIndex: Int) exten
       (tile.coords, tile.bins(0))
     }))
     // .to(_.collect())
-    .to(_.foreach(tile => {
-      val coord = tile._1
-      val termCounts = tile._2
-      val limit = (1 << coord._1) - 1
-      // create and write JSONObject to string
-      val json = new JSONObject()
-      termCounts.foreach(t => {
-        json.put(t._1, t._2)
+    .to(_.foreachPartition(p => {
+      val outputter = outputterFactory.get()
+      p.foreach(tile => {
+        val coord = tile._1
+        val termCounts = tile._2
+        val limit = (1 << coord._1) - 1
+        // create and write JSONObject to string
+        val json = new JSONObject()
+        termCounts.foreach(t => {
+          json.put(t._1, t._2)
+        })
+        outputter.output(
+          s"$layerName/${coord._1}/${coord._2}/${limit - coord._3}.json", //TMS style
+          "application/json",
+          json.toString.getBytes
+        )
       })
-      outputter.output(
-        s"$layerName/${coord._1}/${coord._2}/${limit - coord._3}.json", //TMS style
-        "application/json",
-        json.toString.getBytes
-      )
     }))
     .run
   }

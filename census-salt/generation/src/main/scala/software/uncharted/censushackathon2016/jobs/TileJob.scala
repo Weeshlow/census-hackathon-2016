@@ -5,13 +5,13 @@ import org.apache.spark.sql.{DataFrame, SQLContext, Row}
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
 
-import software.uncharted.censushackathon2016.{layers, TileOutput}
+import software.uncharted.censushackathon2016.{layers, OutputterFactory}
 
 import software.uncharted.salt.core.generation.request.TileLevelRequest
 import software.uncharted.salt.core.generation.mapreduce.MapReduceTileGenerator
 
 object TileJob {
-  def run(data: DataFrame, levelBatches: Seq[Seq[Int]], outputter: TileOutput) = {
+  def run(data: DataFrame, levelBatches: Seq[Seq[Int]], outputterFactory: OutputterFactory) = {
     // Construct an RDD of Rows containing only the fields we need. Cache the result
     val input = Pipe(data)
       .to(_.select("longitude", "latitude", "amount", "type"))
@@ -41,9 +41,9 @@ object TileJob {
             Seq(permits.series, amounts.series, types.series),
             request
           )
-          permits.serialize(level, tiles, outputter)
-          amounts.serialize(level, tiles, outputter)
-          types.serialize(level, tiles, outputter)
+          permits.serialize(level, tiles, outputterFactory)
+          amounts.serialize(level, tiles, outputterFactory)
+          types.serialize(level, tiles, outputterFactory)
         }))
         .run;
 
