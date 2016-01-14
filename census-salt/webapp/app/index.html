@@ -122,12 +122,12 @@
 
     // Create the canvas tile layer
     var amountsLayer = new L.tileLayer.canvas({
-      url: './tiles/cumulative-amounts/{z}/{x}/{y}.bins'
+      url: './tiles/cumulative-amounts/{z}/{x}/{y}.bin'
     });
     // Override 'drawTile' method. Requests the bin data for the tile, and
     // if it exists, renders to the canvas element for the repsecive tile.
     amountsLayer.drawTile = function(canvas, index, zoom) {
-      var url = './tiles/cumulative-amounts/'+zoom+'/'+index.x+'/'+index.y+'.bins';
+      var url = './tiles/cumulative-amounts/'+zoom+'/'+index.x+'/'+index.y+'.bin';
       getArrayBuffer(url, function(bins) {
         if (!bins) {
           // Exit early if no data
