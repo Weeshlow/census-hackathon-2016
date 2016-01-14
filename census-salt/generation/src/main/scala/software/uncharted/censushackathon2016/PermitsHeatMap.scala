@@ -46,7 +46,7 @@ class PermitsHeatMap(levels: Seq[Int]) extends Serializable {
       // Return tuples of tile coordinate, byte array
       (tile.coords, ByteBufferCreator.create(tile, tileSize))
     }))
-    .to(_.collect())
+    // .to(_.collect())
     .to(_.foreach(binTile => {
       // Save byte files to local filesystem
       val coord = binTile._1

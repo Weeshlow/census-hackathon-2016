@@ -21,9 +21,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
-class WordCloud(levels: Seq[Int], termColumnIndex: Int) extends Serializable {
-  // Defines the output layer name
-  private val layerName = "description-word-cloud"
+class WordCloud(layerName: String, levels: Seq[Int], termColumnIndex: Int) extends Serializable {
 
   // Given an input row, return permit longitude, latitude as a tuple
   private val permitExtractor = (r: Row) => {
@@ -58,7 +56,7 @@ class WordCloud(levels: Seq[Int], termColumnIndex: Int) extends Serializable {
       // Return tuples of tile coordinate, term counts
       (tile.coords, tile.bins(0))
     }))
-    .to(_.collect())
+    // .to(_.collect())
     .to(_.foreach(tile => {
       val coord = tile._1
       val termCounts = tile._2
