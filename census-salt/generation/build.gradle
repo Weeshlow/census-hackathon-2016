@@ -75,6 +75,8 @@ dependencies {
   provided "org.scala-lang:scala-library:$scalaBinaryVersion"
 
   compile "com.databricks:spark-csv_2.10:1.2.0"
+
+  compile "org.json:json:20151123"
 }
 
 task wrapper(type: Wrapper) {

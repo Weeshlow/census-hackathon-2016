@@ -26,7 +26,7 @@
     var map = new L.Map('map', {
       zoomControl: true,
       center: [40.7, -73.9],
-      zoom: 11,
+      zoom: 7,
       maxZoom: 13
     });
 
@@ -117,8 +117,8 @@
     permitsLayer.addTo(map);
 
     // Defines the two color values to interpolate between
-    var amountsFromColor = { r: 0, g: 0, b: 150, a: 150 };
-    var amountsToColor = { r: 0, g: 50, b: 255, a: 255 };
+    var amountsFromColor = { r: 0, g: 0, b: 25, a: 100 };
+    var amountsToColor = { r: 0, g: 150, b: 255, a: 255 };
 
     // Create the canvas tile layer
     var amountsLayer = new L.tileLayer.canvas({
@@ -136,7 +136,7 @@
         var ctx = canvas.getContext("2d");
         var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         var data = imageData.data;
-        var minMax = {"min": 0, "max": 100000};
+        var minMax = {"min": 0, "max": 86*1000*1000*1000};
         bins.forEach(function(bin,index) {
           // Interpolate bin value to get rgba
           var rgba = interpolateColor(bin, minMax.min, minMax.max, amountsFromColor, amountsToColor);
