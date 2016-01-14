@@ -77,6 +77,7 @@ dependencies {
   compile "com.databricks:spark-csv_2.10:1.2.0"
 
   compile "org.json:json:20151123"
+  compile "com.amazonaws:aws-java-sdk:1.10.46"
 }
 
 task wrapper(type: Wrapper) {

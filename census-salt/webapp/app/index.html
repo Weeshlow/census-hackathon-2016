@@ -86,12 +86,12 @@
 
     // Create the canvas tile layer
     var permitsLayer = new L.tileLayer.canvas({
-      url: './tiles/permits/{z}/{x}/{y}.bins'
+      url: './tiles/permits/{z}/{x}/{y}.bin'
     });
     // Override 'drawTile' method. Requests the bin data for the tile, and
     // if it exists, renders to the canvas element for the repsecive tile.
     permitsLayer.drawTile = function(canvas, index, zoom) {
-      var url = './tiles/permits/'+zoom+'/'+index.x+'/'+index.y+'.bins';
+      var url = './tiles/permits/'+zoom+'/'+index.x+'/'+index.y+'.bin';
       getArrayBuffer(url, function(bins) {
         if (!bins) {
           // Exit early if no data

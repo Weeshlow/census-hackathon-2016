@@ -1,7 +1,5 @@
 package software.uncharted.censushackathon2016
 
-import java.io.{File, FileOutputStream}
-
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, DataFrame}
@@ -46,8 +44,8 @@ class CumulativeAmountsHeatMap(levels: Seq[Int]) extends Serializable {
                           SumAggregator,
                           Some(MinMaxAggregator))
 
-  // extract our SeriesData from each tile and write it to the filesystem
-  def output(level: Seq[Int], tiles: RDD[Tile[(Int, Int, Int)]], outputPath: String) = {
+  // extract our SeriesData from each tile and write it out
+  def serialize(level: Seq[Int], tiles: RDD[Tile[(Int, Int, Int)]], outputter: TileOutput) = {
     val seriesData = Pipe(tiles)
                      .to(_.map(series(_)))
 
@@ -62,12 +60,12 @@ class CumulativeAmountsHeatMap(levels: Seq[Int]) extends Serializable {
       val coord = binTile._1
       val byteArray = binTile._2
       val limit = (1 << coord._1) - 1
-      // Use standard TMS path structure and file naming
-      val file = new File(s"$outputPath/$layerName/${coord._1}/${coord._2}/${limit - coord._3}.bins")
-      file.getParentFile.mkdirs()
-      val output = new FileOutputStream(file)
-      output.write(byteArray)
-      output.close()
+
+      outputter.output(
+        s"$layerName/${coord._1}/${coord._2}/${limit - coord._3}.bin", //TMS style
+        "application/json",
+        byteArray
+      )
     }))
     .run
   }
