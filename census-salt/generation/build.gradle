@@ -40,7 +40,7 @@ repositories {
 }
 
 jar {
-  baseName = 'census-salt-heatmap'
+  baseName = 'census-salt'
   version =  version
   dependsOn configurations.runtime
   from {
@@ -85,7 +85,7 @@ task wrapper(type: Wrapper) {
 
 task run(overwrite: true, type: Exec, dependsOn: [assemble, scalaStyle]) {
   executable = 'spark-submit'
-  args = ["--class","software.uncharted.censushackathon2016.Main","/opt/salt/build/libs/census-salt-heatmap-${version}.jar", "/opt/data/*.csv", "/opt/output"]
+  args = ["--class","software.uncharted.censushackathon2016.Main","/opt/salt/build/libs/census-salt-${version}.jar", "/opt/data/*.csv", "/opt/output"]
 }
 
 idea {
