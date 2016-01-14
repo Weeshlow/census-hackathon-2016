@@ -4,8 +4,6 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, DataFrame}
 
-import scala.util.parsing.json.JSONObject
-
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
 

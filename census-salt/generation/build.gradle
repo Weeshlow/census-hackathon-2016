@@ -78,6 +78,7 @@ dependencies {
 
   compile "org.json:json:20151123"
   compile "com.amazonaws:aws-java-sdk:1.10.46"
+  compile "org.spire-math:spire_2.11:0.11.0"
 }
 
 task wrapper(type: Wrapper) {
