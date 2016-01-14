@@ -1,11 +1,14 @@
-package software.uncharted.censushackathon2016
+package software.uncharted.censushackathon2016.layers
 
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, DataFrame}
 
+import software.uncharted.censushackathon2016.{TileOutput,ByteBufferCreator}
+
 import software.uncharted.sparkpipe.Pipe
 import software.uncharted.sparkpipe.ops
+
 
 import software.uncharted.salt.core.projection.numeric.MercatorProjection
 import software.uncharted.salt.core.generation.Series

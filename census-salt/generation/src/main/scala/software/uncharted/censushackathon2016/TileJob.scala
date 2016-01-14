@@ -28,9 +28,9 @@ object TileJob {
           println(s"Generating level $level")
           println("------------------------------")
 
-          val permits = new PermitsHeatMap(level)
-          val amounts = new CumulativeAmountsHeatMap(level)
-          val types = new WordCloud("type-word-cloud", level, 3)
+          val permits = new layers.PermitsHeatMap(level)
+          val amounts = new layers.CumulativeAmountsHeatMap(level)
+          val types = new layers.WordCloud("type-word-cloud", level, 3)
 
           // Create a request for all tiles on these levels, generate
           val request = new TileLevelRequest(level, (coord: (Int, Int, Int)) => coord._1)
