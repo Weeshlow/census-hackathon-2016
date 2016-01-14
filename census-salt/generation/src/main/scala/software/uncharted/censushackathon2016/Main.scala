@@ -53,7 +53,8 @@ object Main {
         if (a == null) None else Some(a/100.0)
       }: Option[Double]))
       .to(input => {
-        jobs.TileJob.run(input, levelBatches, outputter)
+        // jobs.TileJob.run(input, levelBatches, outputter)
+        jobs.TimeSlicePermits.run(input, levelBatches, outputter, 466232400000L, 1454112000000L, 50)
       })
       .run;
   }

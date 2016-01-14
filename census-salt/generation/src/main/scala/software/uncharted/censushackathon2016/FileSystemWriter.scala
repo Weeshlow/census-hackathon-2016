@@ -4,7 +4,7 @@ import java.io.{File, FileOutputStream}
 
 class FileSystemWriterFactory(outputDir: String) extends OutputterFactory {
   override def get: FileSystemWriter = {
-    return new FileSystemWriter(outputDir)
+    new FileSystemWriter(outputDir)
   }
 }
 

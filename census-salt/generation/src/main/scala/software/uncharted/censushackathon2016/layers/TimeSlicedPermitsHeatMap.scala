@@ -43,7 +43,7 @@ class TimeSlicedPermitsHeatMap(layerName: String, levels: Seq[Int], minTime: Lon
     seriesData
     .to(_.map(tile => {
       // Return tuples of tile coordinate, byte array
-      (tile.coords, ByteBufferCreator.create(tile, tileSize*tileSize*slices))
+      (tile.coords, ByteBufferCreator.create(tile, tileSize*tileSize*(slices + 1)))
     }))
     // .to(_.collect())
     .to(_.foreachPartition(p => {
