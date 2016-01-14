@@ -17,8 +17,15 @@ const columnNames = {}; // CSV column names for each dataset
 const modules = {};
 const buffs = {}; // buffers for each file
 const startedData = {}; // whether or not we've reached the actual data in each file
+const inputStreams = {}; // input streams
 const outputStreams = {}; // output streams for each file
 const counts = {};
+
+process.on('exit', function() {
+  for (let key of Object.keys(counts)) {
+    console.log(`Finished reading ${counts[key]} records from file ${key}`);
+  }
+});
 
 // search the buffer for the start of the data
 function processBuffer(file) {
@@ -116,6 +123,7 @@ fs.readdir(process.argv[2], function(err, files) {
   }
 
   for (let f of files) {
+
     // try to load specific parsing module for f, if we fail then we don't need to parse the file
     try {
       const moduleName = path.join('modules', f.substring(0, f.length-5) + '.js');
@@ -132,17 +140,16 @@ fs.readdir(process.argv[2], function(err, files) {
       buffs[f] = '';
 
       // use processBuffer to look for individual records to pump through module[f]
-      let stream = fs.createReadStream(path.join(process.argv[2], f), {flags: 'r'});
-      stream.on('data', d => {
+      inputStreams[f] = fs.createReadStream(path.join(process.argv[2], f), {flags: 'r'});
+      inputStreams[f].on('data', d => {
         if (process.env['TEST'] && counts[f] > MAX_TEST_LINES) {
-          stream.close();
+          inputStreams[f].close();
         } else {
           buffs[f] += d.toString();
           processBuffer(f);
         }
       });
-      stream.on('end', () => {
-        console.log(`Finished reading file ${f}`);
+      inputStreams[f].on('end', () => {
         buffs[f] += '\n';
         processBuffer(f);
         outputStreams[f].end();
@@ -151,7 +158,7 @@ fs.readdir(process.argv[2], function(err, files) {
       if (err.code  && err.code !== 'MODULE_NOT_FOUND') {
         console.dir(err);
       }
-      console.error(`Cannot load parsing module for ${f}`);
+      //console.error(`Cannot load parsing module for ${f}`);
     }
   }
 });
