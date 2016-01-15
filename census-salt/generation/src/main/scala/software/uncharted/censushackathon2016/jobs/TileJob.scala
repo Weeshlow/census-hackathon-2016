@@ -15,6 +15,7 @@ object TileJob {
     // Construct an RDD of Rows containing only the fields we need. Cache the result
     val input = Pipe(data)
       .to(_.select("longitude", "latitude", "amount", "type"))
+      .to(ops.core.dataframe.text.split("type", "|&%$")) //split on a character that isn't present, to turn it into a seq column
       .to(ops.core.dataframe.cache)
       .to(ops.core.dataframe.toRDD)
       .to(sourceData => {
