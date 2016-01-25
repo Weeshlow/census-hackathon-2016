@@ -1,0 +1,41 @@
+.map-control-element {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 4px;
+    border: 1px solid #000;
+    padding: 4px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.date-controls {
+    position: absolute;
+    bottom: 0;
+    width: 800px;
+    height: 80px;
+    left: calc(50% - 200px);
+    z-index: 2;
+    line-height: 20px;
+    text-align: center;
+}
+
+.date-slider-container {
+    position: absolute;
+    bottom: 0;
+}
+
+.date-slider-container .slider.slider-horizontal {
+    width: 300px;
+}
+
+.date-label {
+    display: inline-block;
+    padding: 0 4px;
+    font-size: 12px;
+}
+
+.mobile .date-label {
+    position: absolute;
+    left: 0;
+    bottom: 34px;
+    font-size: 10px;
+}

@@ -1,0 +1,30 @@
+
+.textbox-button,
+.textbox-field {
+    position: relative;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+    padding: 0 4px;
+}
+
+.textbox-button:focus {
+    outline: none !important;
+}
+
+.textbox-button:active,
+.textbox-field:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px #ffffff;
+}
+
+.textbox-field {
+    background-color: #222;
+    color: #ffffff;
+}
+
+.textbox-button {
+    bottom: -1px;
+    background-color: #ffffff;
+}
