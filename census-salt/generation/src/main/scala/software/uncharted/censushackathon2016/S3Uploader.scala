@@ -24,8 +24,8 @@ class S3Uploader(accessKey: String, secretKey: String, bucket: String, keyPrefix
     val bos = new ByteArrayOutputStream(bytes.length)
     val os = new GZIPOutputStream(bos)
     try {
-      os.write(bytes)
-
+      os.write(bytes, 0, bytes.length)
+      os.close()
       val is = new ByteArrayInputStream(bos.toByteArray())
       val meta = new ObjectMetadata()
 
@@ -40,7 +40,6 @@ class S3Uploader(accessKey: String, secretKey: String, bucket: String, keyPrefix
 
       is.close()
     } finally {
-      os.close()
       bos.close()
     }
     keyName
