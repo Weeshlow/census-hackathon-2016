@@ -3,7 +3,7 @@
     'use strict';
 
     var $ = require('jquery');
-    require('../util/jQueryAjaxArrayBuffer');
+    require('../util/jQueryAjaxArraybuffer');
 
     var Config = require('../../config');
     var TileLayer = require('./TileLayer');

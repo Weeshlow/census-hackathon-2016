@@ -37,3 +37,5 @@ deps:
 	@npm install
 	@bower install
 	@go get github.com/golang/lint/golint
+	@go get github.com/robfig/glock
+	@glock sync -n github.com/unchartedsoftware/census-hackathon-2016 < Glockfile
