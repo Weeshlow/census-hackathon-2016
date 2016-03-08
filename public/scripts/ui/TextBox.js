@@ -32,7 +32,7 @@
             if (self.change) {
                 self.change(self._$textBox.val());
             }
-            if ( self._$textBox.val() !== self.submittedValue ) {
+            if (self._$textBox.val() !== self.submittedValue) {
                 self._$submitButton.addClass('is-dirty');
             } else {
                 self._$submitButton.removeClass('is-dirty');

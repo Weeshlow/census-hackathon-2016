@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"runtime"
 	"syscall"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/unchartedsoftware/census-hackathon-2016/api"
 )
 
-const (
+var (
 	port      = "8080"
 	esHost    = "http://10.65.16.13" //http://10.64.16.120"
 	esPort    = "9200"
