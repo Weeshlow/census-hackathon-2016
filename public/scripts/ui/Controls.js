@@ -127,11 +127,12 @@
 
     function createTimeSlider(layer) {
         var meta = layer.getMeta();
-        layer.setTimeField('timestamp');
+        var timerange = meta.timestamp.extrema;
+        layer.setRange('timestamp', timerange.min, timerange.max);
         return new RangeSlider({
             label: 'Time Range',
-            min: meta.timestamp.extrema.min,
-            max: meta.timestamp.extrema.max,
+            min: timerange.min,
+            max: timerange.max,
             step: 86400000,
             initialValue: [layer.getTimeRange().from, layer.getTimeRange().to],
             formatter: function(values) {
@@ -140,10 +141,7 @@
                 return from + ' to ' + to;
             },
             slideStop: function(values) {
-                layer.setTimeRange({
-                    from: values[0],
-                    to: values[1]
-                });
+                layer.setRange('timestamp', values[0], values[1]);
                 layer.redraw();
             }
         });

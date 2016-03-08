@@ -211,11 +211,9 @@
             // controls
 
             var minDate = Number.MAX_VALUE;
-            _.min(meta, function(meta) {
-                minDate = Math.min(minDate, meta.timestamp.extrema.min);
-            });
             var maxDate = 0;
-            _.max(meta, function(meta) {
+            _.forIn(meta, function(meta) {
+                minDate = Math.min(minDate, meta.timestamp.extrema.min);
                 maxDate = Math.max(maxDate, meta.timestamp.extrema.max);
             });
 
@@ -225,15 +223,9 @@
                     min: minDate,
                     max: maxDate,
                     slideStop: function(values) {
-                        esPermitsHeatmap.layer.setTimeRange({
-                            from: values[0],
-                            to: values[1]
-                        });
+                        esPermitsHeatmap.layer.updateRange('timestamp', values[0], values[1]);
+                        esRings.layer.updateRange('timestamp', values[0], values[1]);
                         esPermitsHeatmap.layer.redraw();
-                        esRings.layer.setTimeRange({
-                            from: values[0],
-                            to: values[1]
-                        });
                         esRings.layer.redraw();
                     }
                 }).getElement());

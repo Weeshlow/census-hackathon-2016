@@ -187,6 +187,7 @@
                 rendererClass: prism.Renderer.Canvas.Heatmap
             });
             layer.setOpacity(0.8);
+            layer.addRange('timestamp', meta.timestamp.extrema.min, meta.timestamp.extrema.max);
             layer.setColorRamp('spectral');
             layer.requestTile = liveRequest(
                 requester,
@@ -201,6 +202,7 @@
                 rendererClass: prism.Renderer.HTML.Ring
             });
             layer.addTermsFilter(field, topics);
+            layer.addRange('timestamp', meta.timestamp.extrema.min, meta.timestamp.extrema.max);
             layer.setResolution(8);
             layer.requestTile = liveRequest(
                 requester,
