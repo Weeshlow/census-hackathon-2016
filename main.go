@@ -27,6 +27,20 @@ func main() {
 	// sets the maximum number of CPUs that can be executing simultaneously
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
+	// override defaults via env vars
+	if os.Getenv("ES_HOST") != "" {
+		esHost = os.Getenv("ES_HOST")
+	}
+	if os.Getenv("ES_PORT") != "" {
+		esPort = os.Getenv("ES_PORT")
+	}
+	if os.Getenv("REDIS_HOST") != "" {
+		redisHost = os.Getenv("REDIS_HOST")
+	}
+	if os.Getenv("REDIS_PORT") != "" {
+		redisPort = os.Getenv("REDIS_PORT")
+	}
+
 	// register available tiling types
 	tile.Register("heatmap", elastic.NewHeatmapTile(esHost, esPort))
 	tile.Register("topic_count", elastic.NewTopCountTile(esHost, esPort))
