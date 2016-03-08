@@ -78,7 +78,10 @@
     "globals"       : {         // additional predefined global variables
         "require"   : false,
         "module"    : false,
+        "$"         : false,
+        "_"         : false,
         "L"         : false,
+        "prism"     : false,
         "Templates" : false,
         "Slider"    : false
     }

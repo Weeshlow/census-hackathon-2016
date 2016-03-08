@@ -2,15 +2,12 @@
 
     'use strict';
 
-    var $ = require('jquery');
-    require('./scripts/util/jQueryAjaxArrayBuffer');
-    var _ = require('lodash');
+    var $ = require('./scripts/util/jQueryAjaxArrayBuffer');
     var async = require('async');
 
     var Config = require('./config');
-    var TileRequester = require('./scripts/request/TileRequester');
     var Layers = require('./scripts/layer/Layers');
-    var Controls = require('./scripts/layer/Controls');
+    var Controls = require('./scripts/ui/Controls');
     var DateSlider = require('./scripts/ui/DateSlider');
 
     function init(done) {
@@ -19,11 +16,7 @@
         _.forIn(Config.ES_INDICES, function(val, key) {
             req[key] = function(done) {
                 $.ajax({
-                    url: 'meta/' + Config.META_TYPE + '/' +
-                        Config.ES_ENDPOINT + '/' +
-                        val + '/' +
-                        Config.REDIS_STORE + '/' +
-                        Config.REDIS_ENDPOINT
+                    url: 'meta/' + Config.META_TYPE + '/' + val + '/' + Config.REDIS_STORE
                 }).done(function(meta) {
                     done(null, meta);
                 }).fail(function(err) {
@@ -33,7 +26,7 @@
         });
         // tile requester
         req.requester = function(done) {
-            var requester = new TileRequester('tile-dispatch', function() {
+            var requester = new prism.TileRequestor('tile-dispatch', function() {
                 done(null, requester);
             });
         };
@@ -99,7 +92,9 @@
         };
 
         // Pending tile layer
-        var pendingLayer = Layers.pending();
+        var pendingLayer = new prism.TileLayer.Pending({
+            rendererClass: prism.Renderer.Pending.Blink
+        });
         pendingLayer.addTo(map);
 
         // pull meta data and establish a websocket connection for generating tiles
@@ -209,18 +204,18 @@
                 controls: Controls.create(
                     'Census Heatmap (ES)',
                     esPermitLayer,
-                    ['opacity', 'resolution', 'range', 'xField', 'yField', 'zField']
+                    ['opacity', 'resolution', 'range', 'xField', 'yField']
                 )
             };
 
             // controls
 
             var minDate = Number.MAX_VALUE;
-            _.min( meta, function(meta) {
+            _.min(meta, function(meta) {
                 minDate = Math.min(minDate, meta.timestamp.extrema.min);
             });
             var maxDate = 0;
-            _.max( meta, function(meta) {
+            _.max(meta, function(meta) {
                 maxDate = Math.max(maxDate, meta.timestamp.extrema.max);
             });
 

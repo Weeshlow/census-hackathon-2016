@@ -33,6 +33,9 @@ deploy: clean lint
 	@gulp deploy
 	@cp -r ./build/public ./deploy/server
 
+update_deps:
+	@glock save -n github.com/unchartedsoftware/census-hackathon-2016 > Glockfile
+
 deps:
 	@npm install
 	@bower install

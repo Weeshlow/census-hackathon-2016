@@ -5,7 +5,6 @@ import (
 	"syscall"
 
 	log "github.com/unchartedsoftware/plog"
-	"github.com/unchartedsoftware/prism-server/conf"
 	"github.com/unchartedsoftware/prism/generation/elastic"
 	"github.com/unchartedsoftware/prism/generation/meta"
 	"github.com/unchartedsoftware/prism/generation/tile"
@@ -16,21 +15,25 @@ import (
 	"github.com/unchartedsoftware/census-hackathon-2016/api"
 )
 
+const (
+	port      = "8080"
+	esHost    = "http://10.65.16.13" //http://10.64.16.120"
+	esPort    = "9200"
+	redisHost = "localhost"
+	redisPort = "6379"
+)
+
 func main() {
 	// sets the maximum number of CPUs that can be executing simultaneously
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
-	// parse flags into config struct
-	config := conf.ParseCommandLine()
-
 	// register available tiling types
-	tile.Register("heatmap", elastic.NewHeatmapTile)
-	tile.Register("topiccount", elastic.NewTopicCountTile)
-	tile.Register("topicfrequency", elastic.NewTopicFrequencyTile)
+	tile.Register("heatmap", elastic.NewHeatmapTile(esHost, esPort))
+	tile.Register("topic_count", elastic.NewTopCountTile(esHost, esPort))
 	// register available meta data types
-	meta.Register("default", elastic.NewDefaultMeta)
+	meta.Register("default", elastic.NewDefaultMeta(esHost, esPort))
 	// register available store types
-	store.Register("redis", redis.NewConnection)
+	store.Register("redis", redis.NewConnection(redisHost, redisPort))
 
 	// create server
 	app := api.New()
@@ -38,8 +41,8 @@ func main() {
 	// catch kill signals for graceful shutdown
 	graceful.AddSignal(syscall.SIGINT, syscall.SIGTERM)
 	// start server
-	log.Debugf("Server listening on port %s", config.Port)
-	err := graceful.ListenAndServe(":"+config.Port, app)
+	log.Debugf("Prism server listening on port %s", port)
+	err := graceful.ListenAndServe(":"+port, app)
 	if err != nil {
 		log.Error(err)
 	}

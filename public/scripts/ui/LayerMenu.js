@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    var $ = require('jquery');
-
     var LayerMenu = function(spec) {
         var self = this;
         // parse inputs

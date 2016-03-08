@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    var $ = require('jquery');
-
     var ToggleBox = function(spec) {
         var self = this;
         // parse inputs

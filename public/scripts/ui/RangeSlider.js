@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    var $ = require('jquery');
-
     var RangeSlider = function(spec) {
         var self = this;
         // parse inputs
@@ -12,7 +10,7 @@
         spec.max = spec.max !== undefined ? spec.max : 1.0;
         spec.step = spec.step !== undefined ? spec.step : 0.1;
         this._formatter = spec.formatter || function(values) {
-                return values[0].toFixed(2) + ' to ' + values[1].toFixed(2);
+            return values[0].toFixed(2) + ' to ' + values[1].toFixed(2);
         };
         if (spec.initialValue !== undefined) {
             spec.initialFormattedValue = this._formatter(spec.initialValue);

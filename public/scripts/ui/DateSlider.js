@@ -1,7 +1,6 @@
 (function() {
     'use strict';
 
-    var $ = require('jquery');
     var moment = require('moment');
     var DAY_MS = 86400000;
 
@@ -18,7 +17,7 @@
         spec.max = spec.max !== undefined ? spec.max : Date.Now();
         spec.step = DAY_MS;
         this._formatter = spec.formatter || function(values) {
-                return _getFriendlyDate(values[0]) + ' to ' + _getFriendlyDate(values[1]);
+            return _getFriendlyDate(values[0]) + ' to ' + _getFriendlyDate(values[1]);
         };
         if (spec.initialValue !== undefined) {
             spec.initialFormattedValue = this._formatter(spec.initialValue);

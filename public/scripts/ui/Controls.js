@@ -3,12 +3,12 @@
     'use strict';
 
     var moment = require('moment');
-    var LayerMenu = require('../ui/LayerMenu');
-    var Slider = require('../ui/Slider');
-    var TextBox = require('../ui/TextBox');
-    var ToggleBox = require('../ui/ToggleBox');
-    var RangeSlider = require('../ui/RangeSlider');
-    var ColorRampSlider = require('../ui/ColorRampSlider');
+    var LayerMenu = require('./LayerMenu');
+    var Slider = require('./Slider');
+    var TextBox = require('./TextBox');
+    var ToggleBox = require('./ToggleBox');
+    var RangeSlider = require('./RangeSlider');
+    var ColorRampSlider = require('./ColorRampSlider');
 
     function createOpacitySlider(layer) {
         return new Slider({
@@ -39,21 +39,23 @@
     function createTopicToggleBox(layer, topic) {
 
         function addTopic() {
-            var topics = layer.getTopics();
+            var filter = layer.getTermsFilter()[0];
+            var topics = filter.terms;
             var index = topics.indexOf(topic);
             if (index === -1) {
                 topics.push(topic);
             }
-            layer.setTopics(topics);
+            layer.updateTermsFilter(filter.field, topics);
         }
 
         function removeTopic() {
-            var topics = layer.getTopics();
+            var filter = layer.getTermsFilter()[0];
+            var topics = filter.terms;
             var index = topics.indexOf(topic);
             if (index !== -1) {
                 topics.splice(index, 1);
             }
-            layer.setTopics(topics);
+            layer.updateTermsFilter(filter.field, topics);
         }
 
         addTopic(topic);
@@ -73,9 +75,14 @@
     }
 
     function createFieldTextBox(layer, field, def) {
+        var method = 'get' + field.toUpperCase() + 'Field';
+        var val = layer[method]();
+        if (!val) {
+            val = def;
+        }
         return new TextBox({
             label: field.toUpperCase() + '-Field',
-            initialValue: def,
+            initialValue: val,
             submit: function(text) {
                 layer['set' + field.toUpperCase() + 'Field'](text);
                 layer.redraw();
@@ -120,14 +127,11 @@
 
     function createTimeSlider(layer) {
         var meta = layer.getMeta();
-        layer.setTimeRange({
-            from: meta.timestamp.extrema.min,
-            to: meta.timestamp.extrema.max
-        });
+        layer.setTimeField('timestamp');
         return new RangeSlider({
             label: 'Time Range',
-            min: layer.getMeta().timestamp.extrema.min,
-            max: layer.getMeta().timestamp.extrema.max,
+            min: meta.timestamp.extrema.min,
+            max: meta.timestamp.extrema.max,
             step: 86400000,
             initialValue: [layer.getTimeRange().from, layer.getTimeRange().to],
             formatter: function(values) {
@@ -159,8 +163,6 @@
                 return createFieldTextBox(layer, 'x', 'pixel.x');
             case 'yField':
                 return createFieldTextBox(layer, 'y', 'pixel.y');
-            case 'zField':
-                return createFieldTextBox(layer, 'z', '');
             case 'toggle-topic':
                 return createTopicToggleBox(layer, arg.toLowerCase());
             case 'range':
@@ -175,15 +177,16 @@
                 layer: layer,
                 label: layerName
             });
-            controls.forEach(function(control) {
-                var split = control.split(':');
+            controls.forEach(function(spec) {
+                var split = spec.split(':');
                 var type = split[0];
                 var arg;
                 if (split.length > 1) {
                     arg = split[1];
                 }
+                var control = getControlByType(type, layer, arg);
                 layerMenu.getBody()
-                    .append(getControlByType(type, layer, arg).getElement())
+                    .append(control.getElement())
                     .append('<div style="clear:both;"></div>');
             });
             return layerMenu;

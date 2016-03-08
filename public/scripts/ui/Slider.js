@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    var $ = require('jquery');
-
     var S = function(spec) {
         var self = this;
         // parse inputs
@@ -13,7 +11,7 @@
         spec.step = spec.step !== undefined ? spec.step : 0.1;
         spec.initialValue = spec.initialValue !== undefined ? spec.initialValue : spec.max;
         this._formatter = spec.formatter || function(value) {
-                return value.toFixed(2);
+            return value.toFixed(2);
         };
         spec.initialFormattedValue = this._formatter(spec.initialValue);
         // create container element

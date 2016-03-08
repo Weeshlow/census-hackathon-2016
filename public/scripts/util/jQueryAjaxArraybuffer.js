@@ -2,9 +2,6 @@
 
     'use strict';
 
-    var $ = require('jquery');
-    var _ = require('lodash');
-
     $.ajaxTransport('+arraybuffer', function(options) {
         var xhr;
         return {

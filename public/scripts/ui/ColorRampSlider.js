@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    var $ = require('jquery');
-
     function drawRamp(elem, colorFn) {
         var width = $(elem).width();
         var height = $(elem).height() - 2;
@@ -54,7 +52,7 @@
         spec.step = spec.step !== undefined ? spec.step : 0.01;
         spec.rampFunc = spec.rampFunc;
         this._formatter = spec.formatter || function(values) {
-                return values[0].toFixed(2) + ' to ' + values[1].toFixed(2);
+            return values[0].toFixed(2) + ' to ' + values[1].toFixed(2);
         };
         if (spec.initialValue !== undefined) {
             spec.initialFormattedValue = this._formatter(spec.initialValue);
@@ -73,6 +71,9 @@
         // set initial ramp canvas
         // temporarily append container to body so measurements are correct
         $('body').append(this._$container);
+        // make background transparent (for ramp)
+        this._$container.find('.slider-selection').css('background-color', 'transparent');
+        // draw ramp
         drawRamp(this._$container.find('.slider-selection'), spec.rampFunc);
         // remove from body
         $(this._container).remove();

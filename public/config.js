@@ -3,14 +3,12 @@
     'use strict';
 
     module.exports = {
-        ES_ENDPOINT: 'openstack',
         ES_INDICES: {
             census: 'census',
             crime: 'crime'
         },
         S3_BUCKET: 'http://xdata-tiles.s3-website-us-east-1.amazonaws.com',
         REDIS_STORE: 'redis',
-        REDIS_ENDPOINT: 'redis_local',
         META_TYPE: 'default',
         PERMIT_TOPICS: [
             'EQUIPMENT',

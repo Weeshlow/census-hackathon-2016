@@ -2,21 +2,29 @@
 
     'use strict';
 
-    var gulp = require('gulp'),
-        concat = require('gulp-concat'),
-        _ = require('lodash'),
-        runSequence,
-        bower,
-        csso,
-        filter,
-        uglify;
+    var gulp = require('gulp');
+    var concat = require('gulp-concat');
+    var source = require('vinyl-source-stream');
+    var handlebars = require('gulp-handlebars');
+    var wrap = require('gulp-wrap');
+    var declare = require('gulp-declare');
+    var watchify = require('watchify');
+    var del = require('del');
+    var jshint = require('gulp-jshint');
+    var csso = require('gulp-csso');
+    var runSequence = require('run-sequence');
+    var gulpgo = require( 'gulp-go' );
+    var filter = require('gulp-filter');
+    var bower = require('main-bower-files');
+    var uglify = require('gulp-uglify');
+    var browserify = require('browserify');
 
     var GO_PATH = process.env.GOPATH;
     var WATCHED_GO_LIBS = [
         'github.com/unchartedsoftware/prism',
         'github.com/unchartedsoftware/prism-server'
     ];
-    var WATCHED_GO_PATHS = _.map( WATCHED_GO_LIBS, function(lib) {
+    var WATCHED_GO_PATHS = WATCHED_GO_LIBS.map( function(lib) {
         return GO_PATH + '/src/' + lib + '/**/*.go';
     });
     var PROJECT_NAME = 'census-hackathon-2016';
@@ -44,9 +52,7 @@
     }
 
     function bundle( bundler, watch ) {
-        var source = require('vinyl-source-stream');
         if ( watch ) {
-            var watchify = require('watchify');
             var watcher = watchify( bundler );
             watcher.on( 'update', function( ids ) {
                 // When any files updates
@@ -72,15 +78,12 @@
     }
 
     gulp.task('clean', function () {
-        var del = require('del');
-        del.sync([ OUTPUT_DIR + '/*']);
+        del.sync([ OUTPUT_DIR ]);
     });
 
     gulp.task('lint', function() {
-        var jshint = require('gulp-jshint');
         return gulp.src( [ PUBLIC_DIR + '/**/*.js',
             '!'+PUBLIC_DIR+'/extern/**/*.js'] )
-            .pipe( jshint() )
             .pipe( jshint('.jshintrc') )
             .pipe( jshint.reporter('jshint-stylish') );
     });
@@ -95,18 +98,14 @@
     });
 
     gulp.task('build-scripts', function() {
-        var browserify = require('browserify'),
-            bundler = browserify( paths.webappRoot, {
-                debug: true,
-                standalone: PROJECT_NAME
-            });
+        var bundler = browserify( paths.webappRoot, {
+            debug: true,
+            standalone: PROJECT_NAME
+        });
         return bundle( bundler, false );
     });
 
     gulp.task('build-templates',function() {
-        var handlebars = require('gulp-handlebars');
-        var wrap = require('gulp-wrap');
-        var declare = require('gulp-declare');
         return gulp.src( paths.templates )
             .pipe( handlebars({
                 // Pass your local handlebars version
@@ -122,8 +121,6 @@
     });
 
     gulp.task('build-styles', function () {
-        csso = csso || require('gulp-csso');
-        var concat = require('gulp-concat');
         return gulp.src( paths.styles )
             .pipe( csso() )
             .pipe( concat( PROJECT_NAME + '.css') )
@@ -138,9 +135,6 @@
     });
 
     gulp.task('build-vendor-js', function() {
-        filter = filter || require('gulp-filter');
-        bower = bower || require('main-bower-files');
-        uglify = uglify || require('gulp-uglify');
         return gulp.src( bower() )
             .pipe( filter('**/*.js') ) // filter js files
             .pipe( concat('vendor.min.js') )
@@ -149,9 +143,6 @@
     });
 
     gulp.task('build-vendor-css', function() {
-        filter = filter || require('gulp-filter');
-        bower = bower || require('main-bower-files');
-        csso = csso || require('gulp-csso');
         return gulp.src( bower() )
             .pipe( filter('**/*.css') ) // filter css files
             .pipe( csso() )
@@ -160,7 +151,6 @@
     });
 
     gulp.task('build-vendor', function( done ) {
-        runSequence = runSequence || require('run-sequence');
         runSequence([
             'build-vendor-js',
             'build-vendor-css' ],
@@ -168,7 +158,6 @@
     });
 
     gulp.task('build', function( done ) {
-        runSequence = runSequence || require('run-sequence');
         runSequence(
             [ 'clean', 'lint' ],
             [ 'build-and-watch-scripts', 'build-templates', 'build-styles', 'build-vendor', 'copy-resources' ],
@@ -176,7 +165,6 @@
     });
 
     gulp.task('deploy', function( done ) {
-        runSequence = runSequence || require('run-sequence');
         runSequence(
             [ 'clean', 'lint' ],
             [ 'build-scripts', 'build-templates', 'build-styles', 'build-vendor', 'copy-resources' ],
@@ -185,14 +173,7 @@
 
     var go;
     gulp.task('serve', function() {
-        var gulpgo = require( 'gulp-go' );
-        go = gulpgo.run( paths.serverRoot, [
-            '-public', '/*=./build/public',
-            '-alias', 'development=http://192.168.0.41:9200',
-            '-alias', 'production=http://10.65.16.13:9200',
-            '-alias', 'openstack=http://10.64.16.120:9200',
-            '-alias', 'redis_local=localhost:6379'
-        ], {
+        go = gulpgo.run( paths.serverRoot, [], {
             cwd: __dirname,
             stdio: 'inherit'
         });
