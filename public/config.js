@@ -7,7 +7,7 @@
             census: 'census',
             crime: 'crime'
         },
-        S3_BUCKET: 'http://xdata-tiles.s3-website-us-east-1.amazonaws.com',
+        S3_BUCKET: 'https://s3.amazonaws.com/xdata-tiles',
         REDIS_STORE: 'redis',
         META_TYPE: 'default',
         PERMIT_TOPICS: [
