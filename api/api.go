@@ -23,16 +23,16 @@ func New() http.Handler {
 	// mount gzip middleware
 	r.Use(middleware.Gzip)
 	// meta dispatching websocket handler
-	log.Debugf("Meta-Dispatch route: '%s'", dispatch.MetaRoute)
+	log.Infof("Meta-Dispatch route: '%s'", dispatch.MetaRoute)
 	r.Get(dispatch.MetaRoute, dispatch.MetaHandler)
 	// tile dispatching websocket handler
-	log.Debugf("Tile-Dispatch route: '%s'", dispatch.TileRoute)
+	log.Infof("Tile-Dispatch route: '%s'", dispatch.TileRoute)
 	r.Get(dispatch.TileRoute, dispatch.TileHandler)
 	// tile request handler
-	log.Debugf("Tile route: '%s'", tile.Route)
+	log.Infof("Tile route: '%s'", tile.Route)
 	r.Post(tile.Route, tile.Handler)
 	// metadata request handler
-	log.Debugf("Meta route: '%s'", meta.Route)
+	log.Infof("Meta route: '%s'", meta.Route)
 	r.Get(meta.Route, meta.Handler)
 	// add greedy route last
 	r.Get("/*", http.FileServer(http.Dir(publicDir)))

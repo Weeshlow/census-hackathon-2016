@@ -18,7 +18,7 @@ import (
 
 var (
 	port      = "8080"
-	esHost    = "http://10.65.16.13" //http://10.64.16.120"
+	esHost    = "http://localhost"
 	esPort    = "9200"
 	redisHost = "localhost"
 	redisPort = "6379"
@@ -42,6 +42,10 @@ func main() {
 		redisPort = os.Getenv("REDIS_PORT")
 	}
 
+	// log endpoints
+	log.Infof("Redis endpoint set to %s:%s", redisHost, redisPort)
+	log.Infof("Elasticsearch endpoint set to %s:%s", esHost, esPort)
+
 	// register available tiling types
 	tile.Register("heatmap", elastic.NewHeatmapTile(esHost, esPort))
 	tile.Register("topic_count", elastic.NewTopCountTile(esHost, esPort))
@@ -56,7 +60,7 @@ func main() {
 	// catch kill signals for graceful shutdown
 	graceful.AddSignal(syscall.SIGINT, syscall.SIGTERM)
 	// start server
-	log.Debugf("Prism server listening on port %s", port)
+	log.Infof("Prism server listening on port %s", port)
 	err := graceful.ListenAndServe(":"+port, app)
 	if err != nil {
 		log.Error(err)
