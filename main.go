@@ -17,6 +17,7 @@ import (
 )
 
 var (
+	publicDir = "./build/public"
 	port      = "8080"
 	esHost    = "http://localhost"
 	esPort    = "9200"
@@ -41,6 +42,9 @@ func main() {
 	if os.Getenv("REDIS_PORT") != "" {
 		redisPort = os.Getenv("REDIS_PORT")
 	}
+	if os.Getenv("PUBLIC_DIR") != "" {
+		publicDir = os.Getenv("PUBLIC_DIR")
+	}
 
 	// log endpoints
 	log.Infof("Redis endpoint set to %s:%s", redisHost, redisPort)
@@ -55,7 +59,7 @@ func main() {
 	store.Register("redis", redis.NewConnection(redisHost, redisPort))
 
 	// create server
-	app := api.New()
+	app := api.New(publicDir)
 
 	// catch kill signals for graceful shutdown
 	graceful.AddSignal(syscall.SIGINT, syscall.SIGTERM)

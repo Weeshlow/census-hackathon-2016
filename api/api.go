@@ -11,12 +11,8 @@ import (
 	"github.com/zenazn/goji/web"
 )
 
-const (
-	publicDir = "./build/public"
-)
-
 // New returns a new Goji Mux handler to process HTTP requests.
-func New() http.Handler {
+func New(publicDir string) http.Handler {
 	r := web.New()
 	// mount logger middleware
 	r.Use(middleware.Log)
