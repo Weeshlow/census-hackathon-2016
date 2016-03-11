@@ -14,8 +14,9 @@ object TileJob {
   def run(data: DataFrame, levelBatches: Seq[Seq[Int]], outputterFactory: OutputterFactory) = {
     // Construct an RDD of Rows containing only the fields we need. Cache the result
     val input = Pipe(data)
-      .to(_.select("longitude", "latitude", "amount", "type"))
-      .to(ops.core.dataframe.text.split("type", "|&%$")) //split on a character that isn't present, to turn it into a seq column
+      // .to(_.select("longitude", "latitude", "amount", "type"))
+      .to(_.select("longitude", "latitude", "topics"))
+      .to(ops.core.dataframe.text.split("topics", ",")) //split on a character that isn't present, to turn it into a seq column
       .to(ops.core.dataframe.cache)
       .to(ops.core.dataframe.toRDD)
       .to(sourceData => {
@@ -31,20 +32,22 @@ object TileJob {
           println(s"Generating level $level")
           println("------------------------------")
 
-          val permits = new layers.PermitsHeatMap(level)
-          val amounts = new layers.CumulativeAmountsHeatMap(level)
-          val types = new layers.WordCloud("type-word-cloud", level, 3)
+          // val permits = new layers.PermitsHeatMap(level)
+          // val amounts = new layers.CumulativeAmountsHeatMap(level)
+          // val types = new layers.WordCloud("type-word-cloud", level, 3)
+          val topics = new layers.WordCloud("47eb-r92t-word-cloud", level, 2)
 
           // Create a request for all tiles on these levels, generate
           val request = new TileLevelRequest(level, (coord: (Int, Int, Int)) => coord._1)
           val tiles = gen.generate(
             sourceData,
-            Seq(permits.series, amounts.series, types.series),
+            Seq(topics.series),
             request
           )
-          permits.serialize(level, tiles, outputterFactory)
-          amounts.serialize(level, tiles, outputterFactory)
-          types.serialize(level, tiles, outputterFactory)
+          // permits.serialize(level, tiles, outputterFactory)
+          // amounts.serialize(level, tiles, outputterFactory)
+          // types.serialize(level, tiles, outputterFactory)
+          topics.serialize(level, tiles, outputterFactory)
         }))
         .run;
 

@@ -31,30 +31,34 @@ object Main {
     // number of tile outputs is quite low. Lower levels done individually due to high tile counts.
     val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10), List(10), List(11))
 
-    val outputter = new FileSystemWriterFactory(outputPath)
+    val outputter = new S3UploaderFactory("AKIAIN76XVNSTEENAUXQ",
+                                          "kf/SqEZeYaWB3mNG+BeFE4wjJGKEza3RjIWyZCCn",
+                                          "xdata-tiles",
+                                          "census-hackathon-2016")
 
     // Construct an RDD of Rows containing only the fields we need. Cache the result
     val input = Pipe(sqlContext)
       .to(ops.core.dataframe.io.read(
-        s"file://$inputPath",
+        s"hdfs://$inputPath",
         "com.databricks.spark.csv",
         Map("inferSchema" -> "true", "header" -> "true"))
       )
       .to(ops.core.dataframe.castColumns(Map(
         "latitude" -> "double",
         "longitude" -> "double",
-        "amount" -> "double",
-        "timestamp" -> "timestamp"))
+        // "amount" -> "double",
+        // "timestamp" -> "timestamp",
+        "topics" -> "string"))
       )
-      .to(ops.core.dataframe.replaceColumn("timestamp", (t: Timestamp) => {
-        if (t == null) None else Some(t.getTime())
-      }: Option[Long]))
-      .to(ops.core.dataframe.replaceColumn("amount", (a: java.lang.Double) => {
-        if (a == null) None else Some(a/100.0)
-      }: Option[Double]))
+      // .to(ops.core.dataframe.replaceColumn("timestamp", (t: Timestamp) => {
+      //   if (t == null) None else Some(t.getTime())
+      // }: Option[Long]))
+      // .to(ops.core.dataframe.replaceColumn("amount", (a: java.lang.Double) => {
+      //   if (a == null) None else Some(a/100.0)
+      // }: Option[Double]))
       .to(input => {
-        // jobs.TileJob.run(input, levelBatches, outputter)
-        jobs.TimeSlicePermits.run(input, levelBatches, outputter, 466232400000L, 1454112000000L, 50)
+        jobs.TileJob.run(input, levelBatches, outputter)
+        // jobs.TimeSlicePermits.run(input, levelBatches, outputter, 466232400000L, 1454112000000L, 50)
       })
       .run;
   }

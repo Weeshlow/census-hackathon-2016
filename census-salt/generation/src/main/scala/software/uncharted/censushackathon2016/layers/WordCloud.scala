@@ -38,7 +38,7 @@ class WordCloud(layerName: String, levels: Seq[Int], termColumnIndex: Int) exten
     if (r.isNullAt(termColumnIndex)) {
       None
     } else {
-      Some(Seq(r.getString(termColumnIndex)))
+      Some(r.getAs[Seq[String]](termColumnIndex))
     }
   }
 
