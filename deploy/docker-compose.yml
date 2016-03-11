@@ -4,7 +4,12 @@ server:
         - redis
     ports:
         - "8080:8080"
-
+    environment:
+        - REDIS_HOST=redis
+        - REDIS_PORT=6379
+        - ES_HOST=http://10.65.16.13
+        - ES_PORT=9200
+        - PUBLIC_DIR=/go/src/github.com/unchartedsoftware/census-hackathon-2016/public          
 redis:
     build: ./redis
     ports:
