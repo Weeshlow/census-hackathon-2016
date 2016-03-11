@@ -1,5 +1,5 @@
 package software.uncharted.censushackathon2016
-
+import scala.sys
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SQLContext
@@ -31,8 +31,8 @@ object Main {
     // number of tile outputs is quite low. Lower levels done individually due to high tile counts.
     val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10), List(10), List(11))
 
-    val outputter = new S3UploaderFactory("AKIAIN76XVNSTEENAUXQ",
-                                          "kf/SqEZeYaWB3mNG+BeFE4wjJGKEza3RjIWyZCCn",
+    val outputter = new S3UploaderFactory(sys.env("AWS_ACCESS_KEY"),
+                                          sys.env("AWS_SECRET_KEY"),
                                           "xdata-tiles",
                                           "census-hackathon-2016")
 
