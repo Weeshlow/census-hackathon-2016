@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var $ = require('./scripts/util/jQueryAjaxArrayBuffer');
+    var $ = require('./scripts/util/jQueryAjaxArraybuffer');
     var async = require('async');
 
     var Config = require('./config');
