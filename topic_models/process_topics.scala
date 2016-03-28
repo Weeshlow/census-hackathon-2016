@@ -2,16 +2,18 @@ import scala.util.matching.Regex
 import org.apache.spark.sql.types.{StructType, StructField, StringType}
 import org.apache.spark.sql.Row
 
+val topicName = "msk6-43c6"
+
 // load permits file
 val permits_csv = sqlContext.load(
   "com.databricks.spark.csv",
-  Map("path" -> "hdfs://uscc0-master0.uncharted.software/xdata/data/permits/47eb-r92t*.csv",
+  Map("path" -> s"hdfs://uscc0-master0.uncharted.software/xdata/data/permits/$topicName*.csv",
     "header" -> "true",
     "inferSchema" -> "true"))
 val permits_rows = permits_csv.map(x => x)
 
 // load the topics file into a list of (topic_id, topic words) tuples
-val topics = sc.textFile("hdfs://uscc0-master0.uncharted.software/user/cbethune/permit_topics/47eb-r92t_topics.txt")
+val topics = sc.textFile(s"hdfs://uscc0-master0.uncharted.software/user/cbethune/permit_topics/${topicName}_topics.txt")
 val topicsById = topics.map(x => x.split("=")).map(x => (x(0).toLong, x(1).split(",")))
 
 // convert the topic word lists into regexes for later matching, and broadcast them out
@@ -21,13 +23,13 @@ val termRegex = sc.broadcast(terms.value.map(t => (t._1, t._2.map(s => "(\\b+" +
 // Parse out the permit row map.  This maps a permit's row number in the original permit CSV file to a topic number
 // in the xxx_assignments_30.csv file.
 // loads format localhost_27017_permits_2hre-tvqe_569525a1a1b51ff6f32a969b_2hre-tvqe_0
-val rowMapRaw = sc.textFile("hdfs://uscc0-master0.uncharted.software/user/cbethune/permit_topics/47eb-r92t_reduced_documents.txt")
+val rowMapRaw = sc.textFile(s"hdfs://uscc0-master0.uncharted.software/user/cbethune/permit_topics/${topicName}_reduced_documents.txt")
 val x = rowMapRaw.map(s => ".*_(\\d+)".r.findAllIn(s).matchData.map(_.group(1))).flatMap(x => x).collect
 val rowMap = sc.broadcast(x.map(x => x.toLong).zipWithIndex.toMap)
 
 // Parse out the topic map.  This maps the an offset value from the xxx_reduced_documents.txt file to a
 // topic number.
-val topicMapRaw = sc.textFile("hdfs://uscc0-master0.uncharted.software/user/cbethune/permit_topics/47eb-r92t_assignments_30.csv")
+val topicMapRaw = sc.textFile(s"hdfs://uscc0-master0.uncharted.software/user/cbethune/permit_topics/${topicName}_assignments_30.csv")
 val y = topicMapRaw.map(s => s.split(",").filter(_ != "").map(_.toLong)).flatMap(x => x)
 val topicMap = sc.broadcast(y.collect)
 
@@ -65,4 +67,4 @@ val rows = permitHits.map(r => Row.fromSeq(r._1.toSeq :+ r._2))
 val hitDf = sqlContext.createDataFrame(rows, newSchema)
 hitDf.write.format("com.databricks.spark.csv")
   .option("header", "true")
-  .save("hdfs://uscc0-master0.uncharted.software/xdata/data/permits/output/47eb-r92t")
+  .save(s"hdfs://uscc0-master0.uncharted.software/xdata/data/permits/output/$topicName")
