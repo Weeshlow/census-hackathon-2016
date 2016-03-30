@@ -146,13 +146,24 @@
                 pending);
             return layer;
         },
-        s3TopicsWordCloud: function(pending) {
+        s3BostonTopicsWordCloud: function(pending) {
             var layer = new prism.TileLayer.TopicCount(null, {
                 unloadInvisibleTiles: true,
                 rendererClass: prism.Renderer.HTML.WordCloud
             });
             layer.requestTile = staticRequest(
-                'census-hackathon-2016/topics-word-cloud',
+                'census-hackathon-2016/2hre-tvqe-word-cloud',
+                '.json',
+                pending);
+            return layer;
+        },
+        s3SeattleTopicsWordCloud: function(pending) {
+            var layer = new prism.TileLayer.TopicCount(null, {
+                unloadInvisibleTiles: true,
+                rendererClass: prism.Renderer.HTML.WordCloud
+            });
+            layer.requestTile = staticRequest(
+                'census-hackathon-2016/47eb-r92t-word-cloud',
                 '.json',
                 pending);
             return layer;

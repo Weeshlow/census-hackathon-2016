@@ -172,15 +172,27 @@
             };
 
             // topics word cloud
-            var topicsLayer = Layers.s3TopicsWordCloud(pendingLayer);
-            var s3TopicsWordCloud = {
-                layer: topicsLayer,
+            var bostonTopicsLayer = Layers.s3BostonTopicsWordCloud(pendingLayer);
+            var s3BostonTopicsWordCloud = {
+                layer: bostonTopicsLayer,
                 controls: Controls.create(
-                    'Topics WordCloud (S3)',
-                    topicsLayer,
+                    'Boston Topics WordCloud (S3)',
+                    bostonTopicsLayer,
                     ['opacity']
                 )
             };
+
+            // topics word cloud
+            var seattleTopicsLayer = Layers.s3SeattleTopicsWordCloud(pendingLayer);
+            var s3SeattleTopicsWordCloud = {
+                layer: seattleTopicsLayer,
+                controls: Controls.create(
+                    'Seattle Topics WordCloud (S3)',
+                    seattleTopicsLayer,
+                    ['opacity']
+                )
+            };
+
 
             // types word cloud
             var typesLayer = Layers.s3TypesWordCloud(pendingLayer);
@@ -231,7 +243,8 @@
                 }).getElement());
 
             var orderings = [
-                s3TopicsWordCloud,
+                s3BostonTopicsWordCloud,
+                s3SeattleTopicsWordCloud,
                 s3TypesWordCloud,
                 label,
                 esRings,
@@ -250,7 +263,8 @@
                 entry.controls.minimize();
             });
 
-            s3TopicsWordCloud.controls.disable();
+            s3BostonTopicsWordCloud.controls.disable();
+            s3SeattleTopicsWordCloud.controls.disable();
             s3TypesWordCloud.controls.disable();
             //label.controls.disable();
             esRings.controls.disable();
