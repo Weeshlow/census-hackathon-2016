@@ -29,7 +29,7 @@ object Main {
 
     // Break levels into batches. Process several higher levels at once because the
     // number of tile outputs is quite low. Lower levels done individually due to high tile counts.
-    val levelBatches = List(Range(0, 4), Range(4,8), Range(8, 10), List(10), List(11))
+    val levelBatches = List(Range(0, 11), List(11), List(12), List(13), List(14))
 
     val outputter = new S3UploaderFactory(sys.env("AWS_ACCESS_KEY"),
                                           sys.env("AWS_SECRET_KEY"),
@@ -57,7 +57,7 @@ object Main {
       //   if (a == null) None else Some(a/100.0)
       // }: Option[Double]))
       .to(input => {
-        jobs.TileJob.run(input, levelBatches, outputter)
+        jobs.TileJob.run(input, levelBatches, outputter, outputPath)
         // jobs.TimeSlicePermits.run(input, levelBatches, outputter, 466232400000L, 1454112000000L, 50)
       })
       .run;

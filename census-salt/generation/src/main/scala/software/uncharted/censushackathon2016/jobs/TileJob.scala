@@ -11,7 +11,7 @@ import software.uncharted.salt.core.generation.request.TileLevelRequest
 import software.uncharted.salt.core.generation.mapreduce.MapReduceTileGenerator
 
 object TileJob {
-  def run(data: DataFrame, levelBatches: Seq[Seq[Int]], outputterFactory: OutputterFactory) = {
+  def run(data: DataFrame, levelBatches: Seq[Seq[Int]], outputterFactory: OutputterFactory, layerName: String) = {
     // Construct an RDD of Rows containing only the fields we need. Cache the result
     val input = Pipe(data)
       // .to(_.select("longitude", "latitude", "amount", "type"))
@@ -35,7 +35,7 @@ object TileJob {
           // val permits = new layers.PermitsHeatMap(level)
           // val amounts = new layers.CumulativeAmountsHeatMap(level)
           // val types = new layers.WordCloud("type-word-cloud", level, 3)
-          val topics = new layers.WordCloud("47eb-r92t-word-cloud", level, 2)
+          val topics = new layers.WordCloud(layerName, level, 2)
 
           // Create a request for all tiles on these levels, generate
           val request = new TileLevelRequest(level, (coord: (Int, Int, Int)) => coord._1)
