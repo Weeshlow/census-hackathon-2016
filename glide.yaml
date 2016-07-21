@@ -1,7 +1,10 @@
 package: github.com/unchartedsoftware/census-hackathon-2016
 import:
 - package: github.com/unchartedsoftware/plog
+  version: 51ee4aeaec19c5c84d0727c97e2a897d70af4cb9
 - package: github.com/unchartedsoftware/prism-server
+  version: 9e2893adb408a66e4e2b07e636dfe42da78b5a49
 - package: github.com/unchartedsoftware/prism
+  version: 6b40a2d4ec3adf5ef98ba9b52ae2244dd0e2a45e
 - package: github.com/zenazn/goji
   version: ~1.0
