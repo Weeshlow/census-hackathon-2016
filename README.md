@@ -1,7 +1,7 @@
 # census-hackathon-2016
 
 ## Census Bureau's Perceived Benefits
-The permit microdata would benefit operations in the Decennial, Demographic, and Economic Directorates within the [Census Bureau](http://www.census.gov/about/what.html), and support information needs in other Departments. 
+The permit microdata would benefit operations in the Decennial, Demographic, and Economic Directorates within the [Census Bureau](http://www.census.gov/about/what.html), and support information needs in other Departments.
 
 ### Economic Directorate
 The information would have significant impact in the Economic Directorate to decrease costs, improve quality, and provide new data products, including:
@@ -130,3 +130,52 @@ alberta
 > five year price of oil
 
 > <img src="https://dl.dropboxusercontent.com/u/705531/oil.png" height="200">
+
+## Dependencies
+
+- [Go](https://golang.org/) programming language binaries with the `GOPATH` environment variable specified.
+- [Go](https://golang.org/) version 1.6, or version 1.5 with the `GO15VENDOREXPERIMENT` environment variable set to `1`.
+- [NodeJS](http://nodejs.org/) JavaScript runtime.
+- [Bower](http://bower.io/) package manager (npm install bower -g).
+- [gulp](http://http://gulpjs.com/) build toolkit (npm install gulp -g).
+
+## Development
+
+Clone the repository:
+
+```bash
+mkdir $GOPATH/src/github.com/unchartedsoftware
+cd $GOPATH/src/github.com/unchartedsoftware
+git clone git@github.com:unchartedsoftware/census-hackathon-2016.git
+```
+
+Install dependencies
+
+```bash
+cd census-hackathon-2016
+make deps
+```
+
+Run the server:
+
+```bash
+gulp
+```
+
+## Deploying with Docker
+
+Building the containers:
+
+```bash
+make deploy
+cd ./deploy
+docker-compose build
+```
+
+Running the containers:
+
+```bash
+make deploy
+cd ./deploy
+docker-compose up
+```

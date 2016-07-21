@@ -20,3 +20,4 @@ node_modules
 public/extern
 topic_models/output
 *.swp
+vendor/

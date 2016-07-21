@@ -8,7 +8,7 @@
     "leaflet": "0.7.7",
     "jquery": "2.2.1",
     "lodash": "4.5.1",
-    "prism-client": "git@github.com:unchartedsoftware/prism-client.git"
+    "prism-client": "git@github.com:unchartedsoftware/prism-client.git#0.3.21"
   },
   "overrides": {
     "prism-client": {

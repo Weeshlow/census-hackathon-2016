@@ -1,0 +1,58 @@
+hash: 155f6dd2fda109ea181b455105262e22936cbee8c1ec32a02a3eeedb876ce20c
+updated: 2016-07-21T14:06:16.545843632-04:00
+imports:
+- name: github.com/garyburd/redigo
+  version: 8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13
+  subpackages:
+  - redis
+  - internal
+- name: github.com/gorilla/websocket
+  version: 1f512fc3f05332ba7117626cdfb4e07474e58e60
+- name: github.com/mgutz/ansi
+  version: c286dcecd19ff979eeb73ea444e479b903f2cfcb
+- name: github.com/Sirupsen/logrus
+  version: a283a10442df8dc09befd873fab202bf8a253d6a
+- name: github.com/unchartedsoftware/plog
+  version: 51ee4aeaec19c5c84d0727c97e2a897d70af4cb9
+- name: github.com/unchartedsoftware/prism
+  version: 6b40a2d4ec3adf5ef98ba9b52ae2244dd0e2a45e
+  subpackages:
+  - generation/elastic
+  - generation/meta
+  - generation/tile
+  - store
+  - store/redis
+  - binning
+  - generation/elastic/agg
+  - generation/elastic/param
+  - generation/elastic/query
+  - util/json
+  - util/promise
+  - util
+- name: github.com/unchartedsoftware/prism-server
+  version: 9e2893adb408a66e4e2b07e636dfe42da78b5a49
+  subpackages:
+  - middleware
+  - routes/dispatch
+  - routes/meta
+  - routes/tile
+  - routes
+- name: github.com/vova616/xxhash
+  version: f0a9a8b74d487f9563a527daf3bd6b4fbd3f5d00
+- name: github.com/zenazn/goji
+  version: 64eb34159fe53473206c2b3e70fe396a639452f2
+  subpackages:
+  - graceful
+  - web
+  - graceful/listener
+  - web/mutil
+- name: golang.org/x/sys
+  version: a646d33e2ee3172a661fc09bca23bb4889a41bc8
+  subpackages:
+  - unix
+- name: gopkg.in/olivere/elastic.v3
+  version: f7ae701daf3abe5dfb99f57b3f47738ec93c9c26
+  subpackages:
+  - backoff
+  - uritemplates
+testImports: []

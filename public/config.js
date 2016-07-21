@@ -42,12 +42,12 @@
             'GAS'
         ],
         CRIME_TOPICS: [
-            'Burglary',
-            'Robbery',
-            'Larceny',
-            'Theft',
-            'Homicide',
-            'Shooting'
+            'burglary',
+            'robbery',
+            'larceny',
+            'theft',
+            'homicide',
+            'shooting'
         ]
     };
 
