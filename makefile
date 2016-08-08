@@ -28,7 +28,7 @@ test:
 	@go test $(NOVENDOR)
 
 fmt:
-	@gofmt -l -w $(NOVENDOR)
+	@go fmt $(NOVENDOR)
 	@./node_modules/.bin/jsfmt -w ./public/scripts ./public/*.js
 
 build: clean lint
